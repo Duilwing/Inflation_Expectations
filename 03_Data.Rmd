@@ -1,0 +1,27 @@
+<!--Laden der benötigten Packages-->
+```{r loading packages, include=FALSE, warning= FALSE}
+#unsere packages
+library(tidyverse)
+library(tinytex)
+library(broom)
+library(viridis) # für color-schemes
+library(knitr)
+library(kableExtra)
+library(stargazer) #Darstellung Tests/Regressionen
+library(ggpubr) #Darstellung von mehreren plots in einer Abbildung
+
+```
+
+## Our Dataset
+
+\newpage
+
+
+## Descriptive statistics
+
+\newpage
+
+
+## More statistics
+
+\newpage

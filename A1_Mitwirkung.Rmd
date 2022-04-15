@@ -1,0 +1,16 @@
+
+| Abschnitt | Student           |
+|----------:|-------------------|
+|         1 | Sebastian Pinne   |
+|         2 | Sebastian Pinne   |
+|       3.1 | Luca Strickrodt   |
+|       3.2 | Luca Strickrodt   |
+|       3.3 | Sebastian Pinne   |
+|       4.1 | Luca Strickrodt   |
+|       4.2 | Luca Strickrodt   |
+|       4.3 | Sebastian Pinne   |
+|         5 | Sebastian Pinne   |
+|         6 | Luca Strickrodt   |
+
+
+Wir bitten um eine gemeinsame Benotung der Hausarbeit.

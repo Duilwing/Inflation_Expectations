@@ -1,0 +1,116 @@
+---
+title: "The Formation of Inflation Expectations"
+author1: Veronika Schick
+date: "31.03.2022"
+output:
+  pdf_document:
+    template: ibf_template.tex
+    extra_dependencies: dcolumn
+    toc: yes
+    toc_depth: 3
+    highlight: tango
+    keep_tex: no
+    number_sections: yes
+  word_document:
+    toc: yes
+    toc_depth: '3'
+place1: Hannover
+matriculation_number1: '1234567'
+semester1: '1'
+course_of_study1: Wirtschaftswissenschaft
+author2: Luca Daniel Strickrodt
+adress_street_and_no2: Stolzestraße 39
+postcode2: '30171'
+place2: Hannover
+matriculation_number2: '2891740'
+semester2: '2'
+course_of_study2: Wirtschaftswissenschaft
+adress_street_and_no1: Königsworther Platz 1
+university: Leibniz University Hannover
+faculty: School of Economics and Management
+institute: 'Institute of Money and International Finance '
+advisor: Prof. Dr. Lena Dräger
+altadvisor: Dr. Giang Nghiem
+module: Seminar Monetary Economics Using Microdata
+module_number: ''
+lang: en
+postcode1: '30167'
+geometry: a4paper, left=2cm,right=5cm,top=3cm,bottom=3cm
+bibliography: BIB/bibliography.bib
+csl: CSL/apa.csl
+fontsize: 11pt
+linestretch: 1.5
+lof: yes
+lot: yes
+editor_options:
+  markdown:
+    wrap: sentence
+---
+
+```{r setup, include=FALSE, warning= FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+
+library(knitr)
+library(tidyverse)
+library(tinytex)
+
+```
+
+# Introduction
+
+```{r child='01_Introduction.Rmd'}
+```
+
+# Theoretical Background
+
+```{r child='02_Theoretical_Background.Rmd'}
+```
+
+# Data
+
+```{r child='03_Data.Rmd'}
+```
+
+# Results
+
+```{r child='04_Results.Rmd'}
+```
+
+# Robustness
+
+```{r child='05_Robustness.Rmd'}
+```
+
+# Conclusion
+
+```{r child='06_Conclusion.Rmd'}
+```
+
+<!-- this command \appendix changes the numbering of sections to alphabetical -->
+
+```{=tex}
+\appendix
+\newpage
+```
+
+
+\newpage
+
+# Tables
+
+```{r child='A2_Tables.Rmd'}
+```
+
+\newpage
+
+# Figures
+
+```{r child='A3_Figures.Rmd'}
+```
+
+
+<!-- Makes sure to have a new page for your literature -->
+
+\newpage
+
+# Literature
