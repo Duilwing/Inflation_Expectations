@@ -1,10 +1,11 @@
-<!--Laden der benötigten Packages-->
+<!--loading necessary packages-->
 ```{r loading packages, include=FALSE, warning= FALSE}
 #unsere packages
 library(tidyverse)
+library(readxl)
 library(tinytex)
 library(broom)
-library(viridis) # für color-schemes
+library(viridis) # color-schemes
 library(knitr)
 library(kableExtra)
 library(stargazer) #Darstellung Tests/Regressionen
@@ -13,6 +14,241 @@ library(ggpubr) #Darstellung von mehreren plots in einer Abbildung
 ```
 
 ## Our Dataset
+
+
+- we look at the survey data provided by the Survey of Consumer Expectations of the New York FED
+
+
+<!--Expectations by the SCE-->
+```{r, include=FALSE, warning= FALSE}
+#load data
+CE_Data <- read_excel("DATA/FRBNY-SCE-Data.xlsx", sheet = "Inflation expectations", skip = 2)
+
+#select only one year ahead expectations
+CE_Data <- CE_Data %>%
+  select(c(1,2,4,6,8))%>%
+  rename(median=`Median one-year ahead expected inflation rate`,lower_quantil=`25th Percentile one-year ahead expected inflation rate`, upper_quantil=`75th Percentile one-year ahead expected inflation rate`,point_prediction=`Median point prediction one-year ahead inflation rate`)%>%
+  mutate(date=...1*100+1)%>%
+  select(2:6)%>%
+  relocate(date, .before = median)
+
+
+CE_Data$date <- as.Date(as.character(CE_Data$date),format = "%Y%m%d")
+
+
+
+```
+
+- a plot of consumer expectations of the last ten years give a first expression
+
+
+
+```{r,echo=FALSE, warning=FALSE, fig.cap = "Expectations from 2013-present"}
+
+#pivot zum plotten
+CE_plot <- pivot_longer(CE_Data, cols=2:5, names_to = "quantiles", values_to = "expectations", values_drop_na = FALSE)
+
+#reihenfolge der quantile
+CE_plot$quantiles <- factor(CE_plot$quantiles, levels = c("lower_quantil","median","point_prediction","upper_quantil"))
+
+ggplot(data=CE_plot) + aes(x=date, y = expectations, color = quantiles) + geom_line(size=0.8)+scale_color_viridis(discrete = TRUE)+labs(x="years", y="monthly expectations")+scale_x_date(date_labels = "%Y",date_breaks = "1 year")+ theme_minimal()
+
+```
+
+
+
+- we can see two different phases for inflation expectations: from June 2013 until April 2020 and from May 2020 until today
+- first phase: stable expectations with median and point predictions at around 2.5-3.0% inflation
+- second phase: sudden increase in expectations with a peak at arond 6.5% in the last months
+
+we can see the differences in the descriptive statistics and growth rates for the point estimate of both intervals
+
+
+
+<!--Descriptive statistics-->
+```{r, include=FALSE, warning= FALSE}
+#sub-data sets for both intervals
+
+CE_Data_01 <- CE_Data%>%
+  filter(date<"2020-05-01")
+
+CE_Data_02 <- CE_Data%>%
+  filter(date>"2020-04-01")
+
+
+#summary for first interval 13-20
+sum_01 <- CE_Data_01%>%
+  summarise(mean = mean(median),
+            volatility = sd(median),
+            range= max(median)-min(median))%>%
+  mutate(measure="median")%>%
+  relocate(measure, .before = mean)
+
+sum_02 <- CE_Data_01%>%
+  summarise(mean = mean(point_prediction),
+            volatility = sd(point_prediction),
+            range= max(point_prediction)-min(point_prediction))%>%
+  mutate(measure="point_prediction")%>%
+  relocate(measure, .before = mean)
+
+sum_03 <- CE_Data_01%>%
+  summarise(mean = mean(lower_quantil),
+            volatility = sd(lower_quantil),
+            range= max(lower_quantil)-min(lower_quantil))%>%
+  mutate(measure="lower quantil")%>%
+  relocate(measure, .before = mean)
+
+sum_04 <- CE_Data_01%>%
+  summarise(mean = mean(upper_quantil),
+            volatility = sd(upper_quantil),
+            range= max(upper_quantil)-min(upper_quantil))%>%
+  mutate(measure="upper quantil")%>%
+  relocate(measure, .before = mean)
+
+#summary for second interval
+
+sum_05 <- CE_Data_02%>%
+  summarise(mean = mean(median),
+            volatility = sd(median),
+            range= max(median)-min(median))%>%
+  mutate(measure="median")%>%
+  relocate(measure, .before = mean)
+
+sum_06 <- CE_Data_02%>%
+  summarise(mean = mean(point_prediction),
+            volatility = sd(point_prediction),
+            range= max(point_prediction)-min(point_prediction))%>%
+  mutate(measure="point_prediction")%>%
+  relocate(measure, .before = mean)
+
+sum_07 <- CE_Data_02%>%
+  summarise(mean = mean(lower_quantil),
+            volatility = sd(lower_quantil),
+            range= max(lower_quantil)-min(lower_quantil))%>%
+  mutate(measure="lower quantil")%>%
+  relocate(measure, .before = mean)
+
+sum_08 <- CE_Data_02%>%
+  summarise(mean = mean(upper_quantil),
+            volatility = sd(upper_quantil),
+            range= max(upper_quantil)-min(upper_quantil))%>%
+  mutate(measure="upper quantil")%>%
+  relocate(measure, .before = mean)
+
+
+```
+
+This gives us the following kables for both intervals
+
+```{r,echo=FALSE, warning=FALSE}
+summary_01 <- bind_rows(sum_01,sum_02,sum_03,sum_04)  
+
+
+#darstellung mit kableExtra
+  knitr::kable(summary_01,
+  digits = 4,caption="Summary for expectations from 2013-2020")%>%
+    kable_styling(latex_options = c("striped"))
+```
+
+```{r,echo=FALSE, warning=FALSE}
+summary_02 <- bind_rows(sum_05,sum_06,sum_07,sum_08)  
+
+
+#darstellung mit kableExtra
+  knitr::kable(summary_02,
+  digits = 4,caption="Summary for expectations from 2020-present")%>%
+    kable_styling(latex_options = c("striped"))
+```
+- we see higher value for average median, point estimate, volatility and therefore a wider range in the second sample
+
+- we can also see higher movements by comparing the growth rates of both intervals
+
+
+<!--growth rates for first interval-->
+```{r,echo=FALSE, warning=FALSE, fig.cap = "Growth rates of median expectations from 2013-20"}
+
+#growth rate with index of beginning of sample
+
+CE_Data_01 <- CE_Data_01%>%
+  mutate(growth_rate=100*(median-median[1])/median[1])
+
+ggplot(data=CE_Data_01) + aes(x=date, y = growth_rate) + geom_line(size=1.2,color = "#287D8EFF")+labs(x="years", y="growth rate to basis year")+scale_x_date(date_labels = "%Y",date_breaks = "1 year")+ theme_minimal()
+
+```
+
+
+-new picture now
+
+
+
+
+
+- only small movements, decrease of about 15% in seven years
+
+<!--growth rates-->
+```{r, echo=FALSE, warning=FALSE, fig.cap = "Growth rates of median expectations from 2020-present"}
+
+#growth rate with index of beginning of sample
+CE_Data_02 <- CE_Data_02%>%
+  mutate(growth_rate=100*(median-median[1])/median[1])
+
+#plot
+ggplot(data=CE_Data_02) + aes(x=date, y = growth_rate) + geom_line(size=1.2,color = "#287D8EFF")+labs(x="years", y="growth rate to basis year")+scale_x_date(date_labels = "%m-%Y",date_breaks = "3 months")+ theme_minimal()
+
+
+
+```
+
+
+- more than double the expectations in only two years! shows drastic shift in expectations
+
+
+<!--Trends data for Germany/USA-->
+```{r, include=FALSE, warning= FALSE}
+#loading the data
+infl_Ger <- read_delim("DATA/infl_Ger.csv",delim = ";", escape_double = FALSE, col_types = cols(Monat = col_date(format = "%d/%m/%Y")), trim_ws = TRUE)
+
+infl_r_Ger <- read_delim("DATA/infl_r_Ger.csv",delim = ";", escape_double = FALSE, col_types = cols(Monat = col_date(format = "%d/%m/%Y")), trim_ws = TRUE)
+
+infl_US <- read_delim("DATA/infl_US.csv",delim = ";", escape_double = FALSE, col_types = cols(Monat = col_date(format = "%d/%m/%Y")), trim_ws = TRUE)
+
+infl_r_US <- read_delim("DATA/infl_r_US.csv",delim = ";", escape_double = FALSE, col_types = cols(Monat = col_date(format = "%d/%m/%Y")), trim_ws = TRUE)
+
+```
+
+
+<!--Google trends for Germany-->
+```{r, echo=FALSE, warning=FALSE, fig.cap = "German Google Trends from 2010-present"}
+
+
+infl_sum_Ger <- bind_cols(infl_Ger,infl_r_Ger)%>%
+  select(c(1,2,4,))%>%
+  rename(date=Monat...1,inflation=`inflation: (Deutschland)`,inflationsrate=`inflationsrate: (Deutschland)`)%>%
+  pivot_longer(cols=2:3, names_to = "searched_terms", values_to = "relative_rankings", values_drop_na = FALSE)
+
+ggplot(data=infl_sum_Ger) + aes(x=date, y = relative_rankings, color = searched_terms) + geom_line(size=0.8, alpha=0.8)+scale_color_manual(values=c("#287D8EFF","#FDE725FF"))+labs(x="years")+scale_x_date(date_labels = "%Y",date_breaks = "1 year")+ theme_minimal()  
+
+#,linetype=searched_terms
+
+```
+
+<!--Google trends for USA-->
+```{r, echo=FALSE, warning=FALSE, fig.cap = "US Google Trends from 2010-present"}
+
+infl_sum_US <- bind_cols(infl_US,infl_r_US)%>%
+  select(c(1,2,4,))%>%
+  rename(date=Monat...1,inflation=`inflation: (Vereinigte Staaten)`,inflation_rate=`inflation rate: (Vereinigte Staaten)`)%>%
+  pivot_longer(cols=2:3, names_to = "searched_terms", values_to = "relative_rankings", values_drop_na = FALSE)
+
+ggplot(data=infl_sum_US) + aes(x=date, y = relative_rankings,color = searched_terms) + geom_line(size=0.9,alpha=0.8)+scale_color_manual(values=c("#287D8EFF","#FDE725FF"))+labs(x="years")+scale_x_date(date_labels = "%Y",date_breaks = "1 year")+ theme_minimal()  
+
+#linetype=searched_terms
+#"#287D8EFF","#FDE725FF"
+#"#00A08A","#F21A00"
+
+```
+
+
 
 \newpage
 
@@ -23,5 +259,29 @@ library(ggpubr) #Darstellung von mehreren plots in einer Abbildung
 
 
 ## More statistics
+
+-cyclical behaviour of trends for US is very interesting
+- no one looks after inflation in the summer, so maybe trends coincide with the sales in the winter (Winterschlussverkauf, Black Friday)
+
+<!--Google trends for USA-->
+```{r, echo=FALSE, warning=FALSE, fig.cap = "US Google Trends from 2013-2016"}
+
+infl_sum_US_sub <- bind_cols(infl_US,infl_r_US)%>%
+  select(c(1,2,4,))%>%
+  rename(date=Monat...1,inflation=`inflation: (Vereinigte Staaten)`,inflation_rate=`inflation rate: (Vereinigte Staaten)`)%>%
+  pivot_longer(cols=2:3, names_to = "searched_terms", values_to = "relative_rankings", values_drop_na = FALSE)%>%
+  filter(date>"2013-01-01")%>%
+  filter(date<"2016-01-01")
+
+ggplot(data=infl_sum_US_sub) + aes(x=date, y = relative_rankings,color = searched_terms) + geom_line(size=0.9,alpha=0.8)+scale_color_manual(values=c("#287D8EFF","#FDE725FF"))+labs(x="years")+scale_x_date(date_labels = "%m-%Y",date_breaks = "3 months")+ theme_minimal()  
+
+
+```
+
+
+
+
+
+
 
 \newpage

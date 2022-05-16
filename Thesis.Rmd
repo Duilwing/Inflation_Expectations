@@ -33,7 +33,7 @@ advisor: Prof. Dr. Lena Dräger
 altadvisor: Dr. Giang Nghiem
 module: Seminar Monetary Economics Using Microdata
 module_number: ''
-lang: en
+lang: american
 postcode1: '30167'
 geometry: a4paper, left=2cm,right=5cm,top=3cm,bottom=3cm
 bibliography: BIB/bibliography.bib
