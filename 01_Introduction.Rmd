@@ -1,11 +1,23 @@
 Space for our Introduction
 
 
-Research questions: 
- How do macroeconomic expectations differ across socio-demographic groups?
- How do people update their inflation expectations?
- What is the effect of hearing economic news on inflation expectations?
+Brainard(2022):
+- inflation bears high risks
+- stable and low inflation key for economy and labor market
+
+
+Research question: 
+- Under which circumstances do households/ordinary people update their inflation expectations?
  
  
+from the papers:
+- people have more sensitivity for inflation in rough times, dont look at it in good times
+- people in advanced countries dont care, have no clue about inflation/inflation rates, because the dont have to
  
-Idea: Google Searches about Inflation as a signal for more sensitivity for inflation? 
+Idea:
+- Google Searches about Inflation as a proxy for expectation formation
+- positive correlation between crises like corona and updating behavior and therefore inflation expectations by looking at survey data and google-trends
+
+Conclusions:
+- in google trends for US: cyclical updating behavior until mid 2021, after that huge increase, co movement with the expectations of inflation
+- cyclical updating: increases in spring and around October (black Friday), low interest in the summer and around Christmas/new year

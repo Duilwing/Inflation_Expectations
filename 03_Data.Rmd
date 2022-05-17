@@ -273,7 +273,7 @@ infl_sum_US_sub <- bind_cols(infl_US,infl_r_US)%>%
   filter(date>"2013-01-01")%>%
   filter(date<"2016-01-01")
 
-ggplot(data=infl_sum_US_sub) + aes(x=date, y = relative_rankings,color = searched_terms) + geom_line(size=0.9,alpha=0.8)+scale_color_manual(values=c("#287D8EFF","#FDE725FF"))+labs(x="years")+scale_x_date(date_labels = "%m-%Y",date_breaks = "3 months")+ theme_minimal()  
+ggplot(data=infl_sum_US_sub) + aes(x=date, y = relative_rankings,color = searched_terms) + geom_line(size=0.9,alpha=0.8)+scale_color_manual(values=c("#287D8EFF","#FDE725FF"))+labs(x="months")+scale_x_date(date_labels = "%m",date_breaks = "2 months")+ theme_minimal()  
 
 
 ```

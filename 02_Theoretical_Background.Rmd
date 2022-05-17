@@ -1,5 +1,38 @@
 ## Literature
 
+- a quick overview about the literature
+
+Dräger,Lamla (2012):
+- dont know that much about formation of inflation expectations
+- looking at updating behavior of people in the michigan survey
+- Idea is to look at the participants that are interviewed twice six months later. Have they changed their expectations or not?
+- findings: updating on quantitative questions every 8 months, qualitative every 16 months about one-year-ahead inflation. in recessions updating behavior increases, therefore adjustments about the expectations are correlated with the business cycle. long-term less often adjusted than short-term
+
+Coibion et al. (2020)
+
+- there are important differences between expectations of professionals and normal people
+- people in high income countries are inattentive towards inflation, people in countries like iran, turkey, that have high inflation rates pay attention
+- ordinary people see inflation only in the volatility of consumed goods, like petrol, therefore more volatility in expectations for uninformed agents
+- ordinaries people inflation expectations are not anchored
+- high qualtity of hhs surveys, therefore good tool for analysis
+- news about inflation, monetary policy ore statements by the CB dont have any effects on normal people only on informend specialists
+- when people get an information treatment about inflation, their views change, expectations change strongly
+- expectations and real inflation often differ drastically from one another, as seen in a lot of surveys
+- economic environment is key for views about inflation
+- S.5: "economic agents update their beliefs depending on the strengths of their priors and signals"
+- shopping experience are important for formation of expecrtations ("Tomaten sind teuer geworden") --> Cavallo et al (2017) checken
+- but some goods are more important --> gasoline very important, comovements between expectations and gasoline prices
+- news about inflation can have an effect, but that is very disputable
+- people dont know shit about monetary policy. but when they know, they update their expectations towards the real value and towards professional forecasts
+- Summary for formation of expectations: people are very different in their knwoledge depending on their living experiences, economic environment. the sucessful monetary policy in adavnced countries has led to inattention by households about inflation or inflation goals
+ 
+
+
+Dräger and Nghiem (2018):
+- approximately 50% of respondents believed that inflation over the previous twelve months had been 5% or above, at a time when actual inflation was 0.3%.
+
+
 
 ## Our Hypothesis
 
+positive correlation between crises like corona and updating behavior
