@@ -5,19 +5,24 @@ Brainard(2022):
 - inflation bears high risks
 - stable and low inflation key for economy and labor market
 
+Bernanke(2007):
+- explains risks of inflation, benefits of low stable inflation
+- gives an definition what anchored expectations mean
 
 Research question: 
 - Under which circumstances do households/ordinary people update their inflation expectations?
+- are infl. expectations still anchored or not?
  
  
 from the papers:
 - people have more sensitivity for inflation in rough times, dont look at it in good times
 - people in advanced countries dont care, have no clue about inflation/inflation rates, because the dont have to
  
-Idea:
+Ideas:
 - Google Searches about Inflation as a proxy for expectation formation
 - positive correlation between crises like corona and updating behavior and therefore inflation expectations by looking at survey data and google-trends
+- looking at anchoring by also looking at longtime expectations, maybe regresseion about trends and growth rates for the expectations
+- plotting the correlation between revisions in individuals’ one-year ahead inflation expectations with their revisions in expectations about longer-run inflation(Weber 2021)
 
-Conclusions:
-- in google trends for US: cyclical updating behavior until mid 2021, after that huge increase, co movement with the expectations of inflation
-- cyclical updating: increases in spring and around October (black Friday), low interest in the summer and around Christmas/new year
+Thoughts:
+people build their expectations based on past experiences --> explains german inflation debates: everytime inflation goes slighty up we talk about hyperinflation in the twenties

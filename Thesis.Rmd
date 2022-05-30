@@ -1,5 +1,5 @@
 ---
-title: "The Formation of Inflation Expectations"
+title: "Are we still anchored? The Formation of Households´ Inflation Expectations since 2020"
 author1: Veronika Schick
 date: "31.03.2022"
 output:

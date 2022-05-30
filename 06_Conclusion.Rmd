@@ -1,6 +1,6 @@
 Space for our Conclusion
 
-Research questions: 
- How do macroeconomic expectations differ across socio-demographic groups?
- How do people update their inflation expectations?
- What is the effect of hearing economic news on inflation expectations?
+
+Conclusions:
+- in google trends for US: cyclical updating behavior until mid 2021, after that huge increase, co movement with the expectations of inflation short-term
+- cyclical updating: increases in spring and around October (black Friday), low interest in the summer and around Christmas/new year
