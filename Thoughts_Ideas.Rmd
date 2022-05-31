@@ -1,0 +1,17 @@
+---
+title: "Thoughts and Ideas"
+output: pdf_document
+---
+
+Thoughts:
+- people build their expectations based on past experiences --> explains german inflation debates: everytime inflation goes slighty up we talk about hyperinflation in the twenties
+- people have more sensitivity for inflation in rough times, dont look at it in good times
+- people in advanced countries dont care, have no clue about inflation/inflation rates, because the dont have to
+
+ 
+Ideas:
+- Google Searches about Inflation as a proxy for expectation formation
+- positive correlation between crises like corona and updating behavior and therefore inflation expectations by looking at survey data and google-trends
+- looking at anchoring by also looking at longtime expectations, maybe regresseion about trends and growth rates for the expectations
+- plotting the correlation between revisions in individuals’ one-year ahead inflation expectations with their revisions in expectations about longer-run inflation(Weber 2021)
+- comparison of short and long-term variances

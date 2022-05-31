@@ -90,9 +90,28 @@ Dräger and Lamla (2017):
 - information has no long-term effect
 - imperfect information plays important role for formation of expectations about inflation
 
+Dräger and Lamla (2018):
+- analyzing co-movement of short and long-term inflation expectations
+- again definition of anchoring: only short term moves, but not long-term
+- expectations more anchored since mid 90ties
+- looking at sensitivity of different age cohorts: are they different in their anchoring? --> yes
+- older people react more and change their expectations, therefore are less anchored
+- illustrates different measurement strategies for anchoring
+- anchoring definition same as used by bernanke (2017)
+- movement in the degree of anchoring depends on the size of shocks: only big shocks change something
+- uses data from the MSC
+- expectations for older cohorts remain more volatile, but in general everything gets more stable -> anchoring, but for older people much more fragile, because they experienced high inflation in the 70s
+- younger cohorts react stronger to news and price changes
+- expectations cruel for anchoring: if you lived trough high inflation, you have a lower degree of anchoring, inflation effects through experience long-term the expectations of consumers
+
 
 Dräger and Nghiem (2018):
 - approximately 50% of respondents believed that inflation over the previous twelve months had been 5% or above, at a time when actual inflation was 0.3%.
+
+
+Ha et al.(2022):
+- expectations in EMDE, emerging countries, are less anchored and different than in delevoped countries
+- anchoring has increased, like in advanced economies
 
 
 Lucas(1975):
