@@ -1,13 +1,12 @@
-Space for our Introduction
+This thesis wants to analyze the formation and updating behavior of inflation expectations of US households from 2012-today, particular in the last two years. By combining aggregated and micro data from the Survey of Consumers Expectations and data from Google Trends about search terms like "inflation" it will be possible to determine when households update their knowledge and therefore their short-term expectations.
 
+After a presentation of the theoretical background to inflation expectations we conduct a short descriptive analysis of the one-year expectations from the last ten years as a whole and two sub-sets. This analysis also focus on differences between certain age cohorts and other properties provided by the SCE. After the presentation of the SCE data set we exercise similar operations for the results from the Google Trends data.
+
+After the descriptive analysis we conduct further analyses by combining both data sets to show the relationship between Google searches and changes in inflation expectations. We look at correlation between expectations and uncertainty, google searches and the actual CPI and in a second model the relationship between google searches and micro-data.
 
 
 Research question: 
-- Under which circumstances do households/ordinary people update their inflation expectations?
-- are infl. expectations still anchored or not?
-
-
-
+- Under which circumstances and how often do households update their inflation expectations?
 
 
 Used Papers: 
