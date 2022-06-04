@@ -14,6 +14,61 @@ library(ggpubr)
 
 ```
 
+#old code infl. exp.
+
+
+<!--growth rates for first interval-->
+```{r,echo=FALSE, warning=FALSE, fig.cap = "Growth rates of median expectations from 2013-20"}
+
+#growth rate with index of beginning of sample
+
+CE_Data_01 <- CE_Data_01%>%
+  mutate(growth_rate=100*(median_1y-median_1y[1])/median_1y[1])
+
+ggplot(data=CE_Data_01) + aes(x=date, y = growth_rate) + geom_line(size=1.2,color = "#00798c")+labs(x="years", y="growth rate to basis year")+scale_x_date(date_labels = "%Y",date_breaks = "1 year")+ theme_minimal()
+
+```
+
+<!--growth rates-->
+```{r, echo=FALSE, warning=FALSE, fig.cap = "Growth rates of median expectations from 2020-present"}
+
+#growth rate with index of beginning of sample
+CE_Data_02 <- CE_Data_02%>%
+  mutate(growth_rate=100*(median_1y-median_1y[1])/median_1y[1])
+
+#plot
+ggplot(data=CE_Data_02) + aes(x=date, y = growth_rate) + geom_line(size=1.2,color = "#00798c")+labs(x="years", y="growth rate to basis year")+scale_x_date(date_labels = "%m-%Y",date_breaks = "3 months")+ theme_minimal()
+
+
+
+```
+
+
+-cyclical behavior of trends for US is very interesting
+- no one looks after inflation in the summer, so maybe trends coincide with the sales in the winter (Black Friday)
+
+<!--Google trends for USA-->
+```{r, echo=FALSE, warning=FALSE, fig.cap = "US Google Trends from 2013-2016"}
+
+infl_sum_US_sub <- bind_cols(infl_US,infl_r_US)%>%
+  select(c(1,2,4,))%>%
+  rename(date=Monat...1,inflation=`inflation: (Vereinigte Staaten)`,inflation_rate=`inflation rate: (Vereinigte Staaten)`)%>%
+  pivot_longer(cols=2:3, names_to = "searched_terms", values_to = "relative_rankings", values_drop_na = FALSE)%>%
+  filter(date>"2013-01-01")%>%
+  filter(date<"2016-01-01")
+
+ggplot(data=infl_sum_US_sub) + aes(x=date, y = relative_rankings,color = searched_terms) + geom_line(size=0.9,alpha=1)+scale_color_manual(values=c("#00798c","#edae49"))+labs(x="months")+scale_x_date(date_labels = "%m",date_breaks = "2 months")+ theme_minimal()  
+
+
+```
+
+
+
+
+
+
+
+
 ## Selektion des Datensatzes
 
 Die zur Verfügung stehenden Datensätze enthielten Daten über insgesamt 979 Hedgefonds im Zeitraum 01/1990-08/2020. Analog zu @Jones.2007 sowie @Ammann.2005 wurden davon solche Hedgefonds ausgeschlossen, welche wiederum in andere Hedgefonds investieren (sog. Funds of Funds), um einer etwaigen Verzerrung der Ergebnisse vorzubeugen. Aufgrund der Struktur des Datensatzes wurden jeweils für die Untersuchung der Variable 'Alter' und der Variable 'Größe' separate Datensätze gebildet. Zur Untersuchung der Variable 'Alter' wurde der Datensatz auf den Zeitraum 01/2005-12/2014 zugeschnitten, wobei das Alter der historischen Laufzeit des Fonds Stand 01.01.2005 entspricht. Für die Untersuchung der Variable 'Größe' wurde der Zeitraum 01/2010-08/2020 gewählt, wobei die Größe der Fondsgröße bzw. ersatzweise dem Nettovermögen des Fonds entspricht. Hinsichtlich 'Größe' wurden zudem alle Fonds aus dem Datensatz ausgeschlossen, deren Vermögen kleiner als 1 Mio. USD betrug und/oder das Datum der Größenangabe vor dem betrachteten Zeitraum lag. Im Einklang mit den Studien von @Koh.2003, @Agarwal.2004 sowie @Ammann.2005 enthalten die in dieser Studie analysierten Datensätze sowohl durchgängig laufende Fonds, als auch solche, die in den betrachteten Zeiträumen die Geschäftstätigkeit eingestellt haben. Dadurch kann der survivorship bias verhindert werden, also eine Überschätzung der Rendite aufgrund der fehlenden Berücksichtigung eingestellter Fonds.^[zum survivorship bias siehe u.a. @Brown.1992 oder @Elton.1996] Abschließend wurden solche Fonds ausgeschlossen, deren monatliche Preisdaten nicht mindestens die Hälfte der jeweiligen Laufzeit abdeckten.

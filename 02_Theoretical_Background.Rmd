@@ -8,12 +8,7 @@ Bernanke(2007):
 - inflation leads to less public confidence in the economy and economic plicy
 - low inflation "promotes growth, efficiency and stability", what is good for productivity and therefore employment
 - inflation expectations determine actual inflation
-- gives definition of anchored expectations: expectations are anchored when shocks dont have an influence on the long-term expectations of inflation --> shock and high inflation are transitional. when long-term expectations differ, then we have unanchored expectations
-- his hypothesis on P.3: "If, on the other hand, the public reacts to a short period of higher-than-expected inflation by marking up their long-run expectation considerably, then expectations are poorly anchored."
-- anchoring depends on the assumptions of the people, because they dont have full about information about everything. if this holds, than the estimation for inflation changes little, when people are confident about their estimation and they dont react on new information
 - in 2007 inflation less respondive to supply shocks than in the past
-- IMPORTANT: " With inflation expectations well anchored, a one-time increase in energy prices should not lead to a pennanent increase in inflation but only to a change in relative prices. A related implication is that, if inflation expectations are well anchored, changes in energy (and food) prices should have relatively little influence on "core" inflation, that is, inflation excluding the prices of food and energy."
-- in summary expectations are only imperfect anchored
 - surveys a good tool to measure expectations, short and long-term
 
 
@@ -23,17 +18,12 @@ Carvalho(2014):
 
 Carvalho(2021):
 - long-term expectations are endogenous, short-term makes the long-term ones
-- end 1990s unanchored expectations
 
 
 Corsello(2019):
 - uses data from ECB’s Survey of Professional Forecasters, professionals!!!
-- shows, that expectations have become de-anchored
 - analysis with the low inflation right before covid19
-- anchoring necessary to maintain stable inflation
-- gives explanation of different models how to measure anchoring
 - hhs expectations are dependent on movements for energy and food prices
-- reanchoring very important!
 
 
 Coibion et al. (2020):
@@ -47,11 +37,11 @@ Coibion et al. (2020):
 - expectations and real inflation often differ drastically from one another, as seen in a lot of surveys
 - economic environment is key for views about inflation
 - S.5: "economic agents update their beliefs depending on the strengths of their priors and signals"
-- shopping experience are important for formation of expecrtations ("Tomaten sind teuer geworden") --> Cavallo et al (2017) checken
-- but some goods are more important --> gasoline very important, comovements between expectations and gasoline prices
+- shopping experience are important for formation of expectations ("Tomaten sind teuer geworden") --> Cavallo et al (2017) checken
+- but some goods are more important --> gasoline very important, co movements between expectations and gasoline prices
 - news about inflation can have an effect, but that is very disputable
 - people dont know shit about monetary policy. but when they know, they update their expectations towards the real value and towards professional forecasts
-- Summary for formation of expectations: people are very different in their knwoledge depending on their living experiences, economic environment. the sucessful monetary policy in adavnced countries has led to inattention by households about inflation or inflation goals
+- Summary for formation of expectations: people are very different in their knowledge depending on their living experiences, economic environment. the successful monetary policy in advanced countries has led to inattention by households about inflation or inflation goals
 
 
 D’Acunto (2022):
@@ -92,17 +82,11 @@ Dräger and Lamla (2017):
 
 Dräger and Lamla (2018):
 - analyzing co-movement of short and long-term inflation expectations
-- again definition of anchoring: only short term moves, but not long-term
-- expectations more anchored since mid 90ties
-- looking at sensitivity of different age cohorts: are they different in their anchoring? --> yes
 - older people react more and change their expectations, therefore are less anchored
 - illustrates different measurement strategies for anchoring
-- anchoring definition same as used by bernanke (2017)
-- movement in the degree of anchoring depends on the size of shocks: only big shocks change something
 - uses data from the MSC
 - expectations for older cohorts remain more volatile, but in general everything gets more stable -> anchoring, but for older people much more fragile, because they experienced high inflation in the 70s
 - younger cohorts react stronger to news and price changes
-- expectations cruel for anchoring: if you lived trough high inflation, you have a lower degree of anchoring, inflation effects through experience long-term the expectations of consumers
 
 
 Dräger and Nghiem (2018):
@@ -136,8 +120,7 @@ Weber(2021):
 - inflation expectations are essential for economics
 - your perception of future prices influences todays buying decisions. if this holds true expectations about future matter today
 - explains upward bias
-- expectations are not anchored
-- expectations are formed by price signals when we go shopping. although its aonly a small portion, groceries or gasoline are very important for formation of expectations
+- expectations are formed by price signals when we go shopping. although its only a small portion, groceries or gasoline are very important for formation of expectations
 - the more often you purchased a good, the more important price changes are for your infl. expectations
 - other important factors: news coverage, media and cognitive abilities
 - explains MSC and SCE surveys
@@ -148,5 +131,5 @@ Weber(2021):
 
 ## Our Hypotheses
 
-- positive correlation between crises like corona and updating behavior
-- negative correlation between grade of anchored inflation expectations and the crises of the last two years
+-there is a positive correlation between aggregated inflation expectations and uncertainty, Google searches and the actual inflation
+-there is a positive correlation between Google searches and updating behavior of individual consumers
