@@ -4,4 +4,166 @@ output:
   html_document: default
 ---
 
-## Results for Data
+## Updating Behavior
+
+- to analyze updating behavior and its relationship with google searches or inflation expectations we need to compute the updating behavior of individuals at the micro level of the SCE data set
+- we use the idea of dräger (ZITAT)
+
+
+
+## Regressions
+
+- we look now at the updating behavior
+- analyzing this needs the micro data from the SCE
+
+
+
+<!--Micro data by the SCE-->
+```{r, include=FALSE, warning= FALSE}
+
+#load all data
+SCE_micro_13 <- read_excel("DATA/FRBNY-SCE-Public-Microdata-Complete-13-16.xlsx")
+SCE_micro_17 <- read_excel("DATA/FRBNY-SCE-Public-Microdata-Complete-17-19.xlsx")
+SCE_micro_20 <- read_excel("DATA/frbny-sce-public-microdata-latest.xlsx")
+
+#combine in one
+SCE_micro <- bind_rows(SCE_micro_13,SCE_micro_17,SCE_micro_20)
+
+
+#tidy up
+SCE_micro <- SCE_micro %>%
+  rename(Expectation=Q8v2part2)%>%
+  mutate(Date=date*100+1)%>%
+  select(2:5)%>%
+  relocate(Date, .before = userid)%>%
+  group_by(userid)%>%
+  mutate(last_exp=lag(Expectation))%>% 
+  mutate(last_exp = coalesce(last_exp,Expectation))%>%
+  mutate(dummy=case_when(Expectation-last_exp==0
+ ~ 0,Expectation-last_exp!=0 ~ 1))%>%
+  ungroup(userid)
+
+SCE_micro$Date <- as.Date(as.character(SCE_micro$Date),format = "%Y%m%d")
+SCE_micro[is.na(SCE_micro)] <- 0
+
+SCE_micro_1 <- SCE_micro%>%
+  count(Date)
+
+SCE_micro_2 <- SCE_micro%>%
+  group_by(Date)%>%
+  summarise(monthly_count = sum(dummy))
+
+SCE_micro_summary <-bind_cols(SCE_micro_1, SCE_micro_2[2])%>%
+  filter(monthly_count>0)%>%
+  mutate("Updating share"=monthly_count/n)
+```
+
+
+
+<!--Plot Micro data by the SCE all in one-->
+```{r, include=FALSE, warning= FALSE}
+
+
+ggplot(data=SCE_micro_summary) + aes(x=Date, y = `Updating share`) + geom_line(size=0.8,color="steelblue")+labs(x="Years",y="Updating Share")+scale_x_date(date_labels = "%Y",date_breaks = "year")+ theme_minimal()
+
+```
+
+-due to the shorter time series for the micro data we build two different regression tables with them we perform the different regressions
+
+
+<!--Regressions-->
+```{r, include=FALSE, warning= FALSE}
+#transfer data into big regression summary, but without updating behavior
+SCE_Data_regressions <-bind_cols(SCE_Data_summary,infl_summary[42:148,2:3])%>%
+  rename(GS_infl=Inflation, GS_infl_r=`Inflation rate`)
+
+#second regression table for updating and Google searches
+SCE_Data_regressions_micro <-bind_cols(SCE_Data_summary[2:98,],SCE_micro_summary[4],infl_summary[43:139,2:3])%>%rename(GS_infl=Inflation, GS_infl_r=`Inflation rate`)
+
+```
+
+
+-first regression model with aggregated data: uncertainty~ GS_infl+GS_infl_r
+-second regression model with aggregated data: Median~ GS_infl+GS_infl_r
+- third regression model with aggregated data: median of exp~ GS_infl+GS_infl_r+Uncertainty+CPI
+
+<!--Regression Model aggregated data-->
+```{r, echo=FALSE, warning=FALSE, results='asis'}
+
+#regression models
+attach(SCE_Data_regressions)
+model1 <- lm(Uncertainty~GS_infl+GS_infl_r)
+model2 <- lm(Median~ GS_infl+GS_infl_r)
+model3 <- lm(Median~ GS_infl+GS_infl_r+Uncertainty+CPI)
+detach(SCE_Data_regressions)
+
+#results for full sample aggr. data
+stargazer(model1,model2,model3, header=FALSE, type='latex',model.numbers= FALSE,title = "Regressions for aggregated Data, full sample",omit.stat = c("rsq", "f"))
+
+
+```
+
+
+- we also differ between the two sub time-series to analyze if the correlations differ in the two phases
+
+<!--Regression Model aggregated data sub-->
+```{r, echo=FALSE, warning=FALSE}
+
+#building sub sets
+SCE_Data_regressions_01 <- SCE_Data_regressions%>%
+  filter(Date<"2020-05-01")
+
+SCE_Data_regressions_02 <- SCE_Data_regressions%>%
+  filter(Date>"2020-04-01")
+
+```
+
+-we build two models for the first interval to analyze the effect of CPI
+
+<!--Regression Models aggregated data sub1-->
+```{r, echo=FALSE, warning=FALSE, results='asis'}
+
+attach(SCE_Data_regressions_01)
+model1_01 <- lm(Uncertainty~GS_infl+GS_infl_r)
+model2_01 <- lm(Median~GS_infl+GS_infl_r)
+model3_01 <- lm(Median~ GS_infl+GS_infl_r+Uncertainty+SCE_Data_regressions_01$CPI)
+detach(SCE_Data_regressions_01)
+
+stargazer(model1_01,model2_01,model3_01, header=FALSE, type='latex',model.numbers= FALSE,title = "Regressions for aggregated Data, sample from 06/13-04/20",omit.stat = c("rsq", "f"))
+
+```
+
+- we do the same regressions with our second sub time-series
+
+<!--Regression Models aggregated data sub2-->
+```{r, echo=FALSE, warning=FALSE, results='asis'}
+
+attach(SCE_Data_regressions_02)
+model1_02 <- lm(Uncertainty~GS_infl+GS_infl_r)
+model2_02 <- lm(Median~GS_infl+GS_infl_r)
+model3_02 <- lm(Median~ GS_infl+GS_infl_r+Uncertainty+SCE_Data_regressions_02$CPI)
+detach(SCE_Data_regressions_02)
+
+stargazer(model1_02,model2_02,model3_02, header=FALSE, type='latex',model.numbers= FALSE,title = "Regressions for aggregated Data, sample 05/20-04/22",omit.stat = c("rsq", "f"))
+
+
+
+
+```
+
+
+<!--Regression Model micro data 1-->
+```{r, echo=FALSE, warning=FALSE, results='asis'}
+#regressions for micro data
+attach(SCE_Data_regressions_micro)
+model1_micro <- lm(`Updating share`~ GS_infl+GS_infl_r)
+model2_micro <- lm(Uncertainty~ `Updating share`)
+model3_micro <- lm(Median~ `Updating share`)
+
+stargazer(model1_micro,model2_micro,model3_micro, header=FALSE, type='latex',model.numbers= FALSE,title = "Regressions for Micro-Data",omit.stat = c("rsq", "f"))
+
+
+```
+
+
+

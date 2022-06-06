@@ -17,6 +17,7 @@ library(ggpubr) #Darstellung von mehreren plots in einer Abbildung
 
 
 - we look at the survey data provided by the Survey of Consumer Expectations of the New York FED
+- Q8v2,Q8v2part2,Q9 are relevant for the expectations
 
 D’Acunto (2022):
 - explains Survey of Consumer Expectations (SCE)
@@ -68,10 +69,10 @@ SCE_Data_demo <- read_excel("DATA/FRBNY-SCE-Data.xlsx", sheet = "Inflation expec
 <!--CPI Data-->
 ```{r, include=FALSE, warning= FALSE}
 #load CPI
-CPI <- read_csv("DATA/CPIAUCSL.csv")
+cpi <- read_csv("DATA/CPIAUCSL.csv")
 
   
-SCE_Data_sum <-bind_cols(SCE_Data, SCE_Data_unc[2],SCE_Data_demo[2:7],CPI[2])%>%
+SCE_Data_summary <-bind_cols(SCE_Data, SCE_Data_unc[2],SCE_Data_demo[2:7],cpi[2])%>%
   rename("Education High School or Less"=`Education High School or Less`,"College"=`Education Some College`,"BA or Higher"=`Education BA or Higher`, CPI=CPIAUCSL_PC1)
 
 ```
@@ -85,7 +86,7 @@ SCE_Data_sum <-bind_cols(SCE_Data, SCE_Data_unc[2],SCE_Data_demo[2:7],CPI[2])%>%
 ```{r,echo=FALSE, warning=FALSE, fig.cap = "Short-term Expectations from 2013-present"}
 
 #pivot longer
-SCE_plot <- select(SCE_Data_sum,c(1:5))%>%
+SCE_plot <- select(SCE_Data_summary,c(1:5))%>%
   pivot_longer(cols=c(2:5), names_to = "Measures", values_to = "Expectations", values_drop_na = FALSE)
 
 
@@ -115,50 +116,63 @@ ggplot(data=SCE_plot) + aes(x=Date, y = Expectations, color = Measures) + geom_l
 ```{r, include=FALSE, warning= FALSE}
 #sub-data sets for both intervals
 
-CE_Data_01 <- SCE_Data_sum%>%
+SCE_Data_01 <- SCE_Data_summary%>%
   filter(Date<"2020-05-01")
 
-CE_Data_02 <- SCE_Data_sum%>%
+SCE_Data_02 <- SCE_Data_summary%>%
   filter(Date>"2020-04-01")
 
 
 #summary for first interval 13-20
-sum_01 <- CE_Data_01%>%
+sum_01 <- SCE_Data_01%>%
   summarise(Mean = mean(Median),
             Volatility = sd(Median))%>%
   mutate(Measure="Median")%>%
   relocate(Measure, .before = Mean)
 
-sum_02 <- CE_Data_01%>%
+sum_02 <- SCE_Data_01%>%
   summarise(Mean = mean(Point_prediction),
             Volatility = sd(Point_prediction))%>%
   mutate(Measure="Point prediction")%>%
   relocate(Measure, .before = Mean)
 
-sum_03 <- CE_Data_01%>%
+sum_03 <- SCE_Data_01%>%
   summarise(Mean = mean(Uncertainty),
             Volatility = sd(Uncertainty))%>%
   mutate(Measure="Uncertainty")%>%
   relocate(Measure, .before = Mean)
+
+sum_04 <- SCE_Data_01%>%
+  summarise(Mean = mean(CPI),
+            Volatility = sd(CPI))%>%
+  mutate(Measure="CPI")%>%
+  relocate(Measure, .before = Mean)
+
 
 #summary for second interval
 
-sum_04 <- CE_Data_02%>%
+sum_05 <- SCE_Data_02%>%
   summarise(Mean = mean(Median),
             Volatility = sd(Median))%>%
   mutate(Measure="Median")%>%
   relocate(Measure, .before = Mean)
 
-sum_05 <- CE_Data_02%>%
+sum_06 <- SCE_Data_02%>%
   summarise(Mean = mean(Point_prediction),
             Volatility = sd(Point_prediction))%>%
   mutate(Measure="Point prediction")%>%
   relocate(Measure, .before = Mean)
 
-sum_06 <- CE_Data_02%>%
+sum_07 <- SCE_Data_02%>%
   summarise(Mean = mean(Uncertainty),
             Volatility = sd(Uncertainty))%>%
   mutate(Measure="Uncertainty")%>%
+  relocate(Measure, .before = Mean)
+
+sum_08 <- SCE_Data_02%>%
+  summarise(Mean = mean(CPI),
+            Volatility = sd(CPI))%>%
+  mutate(Measure="CPI")%>%
   relocate(Measure, .before = Mean)
 
 
@@ -202,7 +216,7 @@ summary_02 <- bind_rows(sum_04,sum_05,sum_06)
 ```{r, echo=FALSE, warning=FALSE, fig.cap = "Distribution function for Age Groups"}
 #show distribution for Age and Education
 
-SCE_Data_age <- SCE_Data_sum%>%
+SCE_Data_age <- SCE_Data_summary%>%
   select(c(1,7:9))%>%
   pivot_longer(cols=c(2:4), names_to = "Age Groups", values_to = "Expectations", values_drop_na = FALSE)
 
@@ -220,7 +234,7 @@ ggplot(data=SCE_Data_age, aes(x=Expectations, group=`Age Groups`, fill=`Age Grou
 ```{r, echo=FALSE, warning=FALSE, fig.cap = "Distribution function for Education Groups"}
 #show distribution for Education
 
-SCE_Data_ed <- SCE_Data_sum%>%
+SCE_Data_ed <- SCE_Data_summary%>%
   select(c(1,10:12))%>%
   pivot_longer(cols=c(2:4), names_to = "Education Levels", values_to = "Expectations", values_drop_na = FALSE)
 
@@ -249,12 +263,14 @@ infl_r_US <- read_delim("DATA/infl_r_US.csv",delim = ";", escape_double = FALSE,
 <!--Google trends for USA-->
 ```{r, echo=FALSE, warning=FALSE, fig.cap = "US Google Trends Results for Inflation/Inflation rate from 2010-present"}
 
-infl_sum <- bind_cols(infl_US,infl_r_US)%>%
+infl_summary <- bind_cols(infl_US,infl_r_US)%>%
   select(c(1,2,4,))%>%
-  rename(Date=Monat...1,Inflation=`inflation: (Vereinigte Staaten)`,"Inflation rate"=`inflation rate: (Vereinigte Staaten)`)%>%
+  rename(Date=Monat...1,Inflation=`inflation: (Vereinigte Staaten)`,"Inflation rate"=`inflation rate: (Vereinigte Staaten)`)
+
+infl_plot <- infl_summary%>%
   pivot_longer(cols=2:3, names_to = "Searched Terms", values_to = "Relative Rankings", values_drop_na = FALSE)
 
-ggplot(data=infl_sum) + aes(x=Date, y =`Relative Rankings`, color =`Searched Terms`) + geom_line(size=0.9,alpha=1)+scale_color_manual(values=c("#00798c","#B9314F"))+labs(x="Years")+scale_x_date(date_labels = "%Y",date_breaks = "1 year")+ theme_minimal()  
+ggplot(data=infl_plot) + aes(x=Date, y =`Relative Rankings`, color =`Searched Terms`) + geom_line(size=0.9,alpha=1)+scale_color_manual(values=c("#00798c","#B9314F"))+labs(x="Years")+scale_x_date(date_labels = "%Y",date_breaks = "1 year")+ theme_minimal()  
 
 
 ```
@@ -264,10 +280,6 @@ ggplot(data=infl_sum) + aes(x=Date, y =`Relative Rankings`, color =`Searched Ter
 - we will later combine these data with the SCE data set in some regression models
 
 
-## Updating Behavior
-
-- to analyze updating behavior and its relationship with google searches or inflation expectations we need to compute the updating behavior of individuals at the micro level of the SCE data set
-- we use the idea of dräger (ZITAT)
 
 
 \newpage
