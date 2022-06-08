@@ -1,0 +1,8 @@
+## Robustness
+
+- we can see bias in the updating behavior due to monthly updating (QUELLE!!!)
+
+
+## Limitations
+
+- the micro data is only available until July 2021, therefore missing the crucial changes in search behavior, expectations and real inflation of the last ten months

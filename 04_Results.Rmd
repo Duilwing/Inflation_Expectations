@@ -19,7 +19,7 @@ output:
 
 
 <!--Micro data by the SCE-->
-```{r, include=FALSE, warning= FALSE}
+```{r, echo=FALSE, warning= FALSE}
 
 #load all data
 SCE_micro_13 <- read_excel("DATA/FRBNY-SCE-Public-Microdata-Complete-13-16.xlsx")
@@ -41,6 +41,7 @@ SCE_micro <- SCE_micro %>%
   mutate(last_exp = coalesce(last_exp,Expectation))%>%
   mutate(dummy=case_when(Expectation-last_exp==0
  ~ 0,Expectation-last_exp!=0 ~ 1))%>%
+  mutate("Updating Difference"=Expectation-last_exp)%>%
   ungroup(userid)
 
 SCE_micro$Date <- as.Date(as.character(SCE_micro$Date),format = "%Y%m%d")
@@ -53,18 +54,46 @@ SCE_micro_2 <- SCE_micro%>%
   group_by(Date)%>%
   summarise(monthly_count = sum(dummy))
 
-SCE_micro_summary <-bind_cols(SCE_micro_1, SCE_micro_2[2])%>%
-  filter(monthly_count>0)%>%
-  mutate("Updating share"=monthly_count/n)
+SCE_micro_3 <- SCE_micro%>%
+  group_by(userid)%>%
+  summarise(updating_count = sum(dummy))
+
+SCE_micro_4 <- SCE_micro%>%
+  group_by(userid)%>%
+  summarise(Tenure = max(tenure))
+
+SCE_micro_frequency <-bind_cols(SCE_micro_3, SCE_micro_4[2])%>%
+  mutate("Updating Frequency"=updating_count/Tenure)
+
+SCE_micro_frequency_summary <- SCE_micro_frequency%>%
+  summarise(Mean=mean(`Updating Frequency`),
+            Volatility=sd(`Updating Frequency`))%>%
+  mutate(Measure="Updating Frequency")%>%
+  relocate(Measure, .before = Mean)
+
 ```
 
 
+-plotting distribution of updating frequency
 
-<!--Plot Micro data by the SCE all in one-->
-```{r, include=FALSE, warning= FALSE}
+<!--Plot Micro data distribution of updating frequency by the SCE all in one-->
+```{r, echo=FALSE, warning=FALSE, fig.cap = "Distribution of Updating Frequency from the Micro-data"}
 
 
-ggplot(data=SCE_micro_summary) + aes(x=Date, y = `Updating share`) + geom_line(size=0.8,color="steelblue")+labs(x="Years",y="Updating Share")+scale_x_date(date_labels = "%Y",date_breaks = "year")+ theme_minimal()
+ggplot(data=SCE_micro_frequency, aes(x=`Updating Frequency`)) + geom_density(adjust=1, alpha=0.8,color="#440154FF", fill="#440154FF") + labs(x="Updating Frequency in Months",y="Distribution") +scale_x_continuous(breaks = seq(0, 12, by = 1))+ theme_minimal()
+
+```
+
+
+<!--Plot Micro data updating share by the SCE all in one-->
+```{r, echo=FALSE, warning=FALSE, fig.cap = "Updating Shares from the Micro-data"}
+
+
+SCE_micro_summary <-bind_cols(SCE_micro_1, SCE_micro_2[2])%>%
+  filter(monthly_count>0)%>%
+  mutate("Updating share"=monthly_count/n)
+
+ggplot(data=SCE_micro_summary) + aes(x=Date, y = `Updating share`) + geom_line(size=1,color="#440154FF")+labs(x="Years",y="Updating Share")+scale_x_date(date_labels = "%Y",date_breaks = "year")+ theme_minimal()
 
 ```
 
@@ -166,4 +195,17 @@ stargazer(model1_micro,model2_micro,model3_micro, header=FALSE, type='latex',mod
 ```
 
 
+-longer tenure, more updating? regression about this with micro data
+
+
+<!--Regression Model micro data 2-->
+```{r, echo=FALSE, warning=FALSE, results='asis'}
+#regressions for micro data
+attach(SCE_micro_frequency)
+model1_frequency <- lm(`Updating Frequency`~Tenure)
+
+stargazer(model1_frequency, header=FALSE, type='latex',model.numbers= FALSE,title = "Regressions for Micro-Data 2",omit.stat = c("rsq", "f"))
+
+
+```
 

@@ -1,5 +1,5 @@
 ---
-title: "Google inflation? The Formation of Households´ Inflation Expectations since 2020"
+title: "Google inflation? The Formation of Households´ Inflation Expectations since 2013"
 author1: Veronika Schick
 date: "31.03.2022"
 output:
@@ -76,9 +76,9 @@ library(tinytex)
 ```{r child='04_Results.Rmd'}
 ```
 
-# Robustness
+# Robustness and Limitations
 
-```{r child='05_Robustness.Rmd'}
+```{r child='05_Robustness and Limitations.Rmd'}
 ```
 
 # Conclusion

@@ -47,7 +47,7 @@ SCE_Data$Date <- as.Date(as.character(SCE_Data$Date),format = "%Y%m%d")
 ```
 
 <!--Uncertainty data-->
-```{r}
+```{r,include=FALSE, warning= FALSE}
 SCE_Data_unc <- read_excel("DATA/FRBNY-SCE-Data.xlsx", sheet = "Inflation uncertainty", skip = 2)
 
 SCE_Data_unc <- SCE_Data_unc%>%
@@ -73,7 +73,7 @@ cpi <- read_csv("DATA/CPIAUCSL.csv")
 
   
 SCE_Data_summary <-bind_cols(SCE_Data, SCE_Data_unc[2],SCE_Data_demo[2:7],cpi[2])%>%
-  rename("Education High School or Less"=`Education High School or Less`,"College"=`Education Some College`,"BA or Higher"=`Education BA or Higher`, CPI=CPIAUCSL_PC1)
+  rename("HS or Less"=`Education High School or Less`,"College"=`Education Some College`,"BA or Higher"=`Education BA or Higher`, CPI=CPIAUCSL_PC1)
 
 ```
 
@@ -239,7 +239,7 @@ SCE_Data_ed <- SCE_Data_summary%>%
   pivot_longer(cols=c(2:4), names_to = "Education Levels", values_to = "Expectations", values_drop_na = FALSE)
 
 #Rang of Education Levels
-SCE_Data_ed$`Education Levels` <- factor(SCE_Data_ed$`Education Levels`, levels = c("Education High School or Less","College","BA or Higher"))
+SCE_Data_ed$`Education Levels` <- factor(SCE_Data_ed$`Education Levels`, levels = c("HS or Less","College","BA or Higher"))
 
 
 ggplot(data=SCE_Data_ed, aes(x=Expectations, group=`Education Levels`, fill=`Education Levels`)) + geom_density(adjust=0.8, alpha=0.75) + scale_fill_viridis(discrete=TRUE) +
