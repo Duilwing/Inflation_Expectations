@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.3.29)  8 JUN 2022 17:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.3.29)  13 JUN 2022 14:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -837,72 +837,66 @@ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.258 \end{itemize}
-                    [1] [2] [3] [4] [5]
-<Thesis_files/figure-latex/unnamed-chunk-13-1.pdf, id=117, 469.755pt x 325.215p
+                    [1] [2] [3] [4] [5] [6]
+<Thesis_files/figure-latex/unnamed-chunk-13-1.pdf, id=119, 469.755pt x 325.215p
 t>
 File: Thesis_files/figure-latex/unnamed-chunk-13-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-13-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-13-1.pdf  used
- on input line 448.
+ on input line 604.
 (pdftex.def)             Requested size: 398.34032pt x 275.77405pt.
-[6 <./Thesis_files/figure-latex/unnamed-chunk-13-1.pdf>] [7]
-<Thesis_files/figure-latex/unnamed-chunk-17-1.pdf, id=132, 469.755pt x 325.215p
+[7 <./Thesis_files/figure-latex/unnamed-chunk-13-1.pdf>] [8]
+<Thesis_files/figure-latex/unnamed-chunk-17-1.pdf, id=135, 469.755pt x 325.215p
 t>
 File: Thesis_files/figure-latex/unnamed-chunk-17-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-17-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-17-1.pdf  used
- on input line 539.
+ on input line 699.
 (pdftex.def)             Requested size: 398.34032pt x 275.77405pt.
-<Thesis_files/figure-latex/unnamed-chunk-18-1.pdf, id=133, 469.755pt x 325.215p
+<Thesis_files/figure-latex/unnamed-chunk-18-1.pdf, id=136, 469.755pt x 325.215p
 t>
 File: Thesis_files/figure-latex/unnamed-chunk-18-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-18-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-18-1.pdf  used
- on input line 545.
+ on input line 705.
 (pdftex.def)             Requested size: 398.34032pt x 275.77405pt.
-<Thesis_files/figure-latex/unnamed-chunk-20-1.pdf, id=134, 469.755pt x 325.215p
+<Thesis_files/figure-latex/unnamed-chunk-20-1.pdf, id=137, 469.755pt x 325.215p
 t>
 File: Thesis_files/figure-latex/unnamed-chunk-20-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-20-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-20-1.pdf  used
- on input line 558.
+ on input line 718.
 (pdftex.def)             Requested size: 398.34032pt x 275.77405pt.
-[8 <./Thesis_files/figure-latex/unnamed-chunk-17-1.pdf>] [9 <./Thesis_files/fig
-ure-latex/unnamed-chunk-18-1.pdf> <./Thesis_files/figure-latex/unnamed-chunk-20
--1.pdf>]
-<Thesis_files/figure-latex/unnamed-chunk-22-1.pdf, id=165, 469.755pt x 325.215p
+[9 <./Thesis_files/figure-latex/unnamed-chunk-17-1.pdf>] [10 <./Thesis_files/fi
+gure-latex/unnamed-chunk-18-1.pdf> <./Thesis_files/figure-latex/unnamed-chunk-2
+0-1.pdf>] [11]
+<Thesis_files/figure-latex/unnamed-chunk-22-1.pdf, id=173, 469.755pt x 325.215p
 t>
 File: Thesis_files/figure-latex/unnamed-chunk-22-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-22-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-22-1.pdf  used
- on input line 609.
+ on input line 799.
 (pdftex.def)             Requested size: 398.34032pt x 275.77405pt.
-<Thesis_files/figure-latex/unnamed-chunk-23-1.pdf, id=166, 469.755pt x 325.215p
+<Thesis_files/figure-latex/unnamed-chunk-23-1.pdf, id=174, 469.755pt x 325.215p
 t>
 File: Thesis_files/figure-latex/unnamed-chunk-23-1.pdf Graphic file (type pdf)
 <use Thesis_files/figure-latex/unnamed-chunk-23-1.pdf>
 Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-23-1.pdf  used
- on input line 615.
+ on input line 805.
 (pdftex.def)             Requested size: 398.34032pt x 275.77405pt.
-
-Overfull \hbox (44.10768pt too wide) in paragraph at lines 623--628
-\T1/lmr/m/n/10.95 (-20) re-gres-sion model with ag-gre-gated data: me-dian of e
-xp~ GS_infl+GS_infl_r+Uncertainty+CPI 
- []
-
-[10 <./Thesis_files/figure-latex/unnamed-chunk-22-1.pdf>] [11 <./Thesis_files/f
-igure-latex/unnamed-chunk-23-1.pdf>] [12] [13] [14] [15] [16] [17] [18] (Thesis
-.aux)
+[12 <./Thesis_files/figure-latex/unnamed-chunk-22-1.pdf>] [13 <./Thesis_files/f
+igure-latex/unnamed-chunk-23-1.pdf>] [14] [15] [16] [17] [18] [19] [20] [21] (T
+hesis.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 17462 strings out of 478582
- 291212 string characters out of 2843400
- 641104 words of memory out of 3000000
- 35125 multiletter control sequences out of 15000+600000
- 521616 words of font info for 120 fonts, out of 8000000 for 9000
+ 17467 strings out of 478582
+ 291263 string characters out of 2843400
+ 641121 words of memory out of 3000000
+ 35124 multiletter control sequences out of 15000+600000
+ 521782 words of font info for 122 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  74i,11n,77p,1005b,442s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/LucaStr/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}
@@ -922,9 +916,9 @@ mri10.pfb><C:/Users/LucaStr/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
 lm/lmss12.pfb><C:/Users/LucaStr/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/lm/lmsy10.pfb><C:/Users/LucaStr/AppData/Local/Programs/MiKTeX/fonts/type1/pub
 lic/lm/lmsy8.pfb>
-Output written on Thesis.pdf (21 pages, 333837 bytes).
+Output written on Thesis.pdf (24 pages, 336363 bytes).
 PDF statistics:
- 366 PDF objects out of 1000 (max. 8388607)
- 76 named destinations out of 1000 (max. 500000)
- 32951 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 374 PDF objects out of 1000 (max. 8388607)
+ 78 named destinations out of 1000 (max. 500000)
+ 32943 words of extra memory for PDF output out of 35830 (max. 10000000)
 

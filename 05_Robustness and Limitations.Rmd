@@ -2,6 +2,20 @@
 
 - we can see bias in the updating behavior due to monthly updating (QUELLE!!!)
 
+-longer tenure, more updating? regression about this with micro data
+
+
+<!--Regression Model micro data 2-->
+```{r, echo=FALSE, warning=FALSE, results='asis'}
+#regressions for micro data
+attach(SCE_micro_frequency)
+model1_frequency <- lm(`Updating Frequency`~Tenure)
+
+stargazer(model1_frequency, header=FALSE, type='latex',model.numbers= FALSE,title = "Regressions for Micro-Data 2",omit.stat = c("rsq", "f"))
+
+
+```
+
 
 ## Limitations
 

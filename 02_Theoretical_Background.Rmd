@@ -12,21 +12,20 @@ Bernanke(2007):
 - surveys a good tool to measure expectations, short and long-term
 
 
-Carvalho(2014):
-- 
-
-
 Carvalho(2021):
+
 - long-term expectations are endogenous, short-term makes the long-term ones
 
 
 Corsello(2019):
+
 - uses data from ECB’s Survey of Professional Forecasters, professionals!!!
 - analysis with the low inflation right before covid19
 - hhs expectations are dependent on movements for energy and food prices
 
 
 Coibion et al. (2020):
+
 - there are important differences between expectations of professionals and normal people
 - people in high income countries are inattentive towards inflation, people in countries like iran, turkey, that have high inflation rates pay attention
 - ordinary people see inflation only in the volatility of consumed goods, like petrol, therefore more volatility in expectations for uninformed agents
@@ -45,6 +44,7 @@ Coibion et al. (2020):
 
 
 D’Acunto (2022):
+
 - P.1:"household inflation expectations are biased upwards, dispersed across individuals, and volatile in the time series"
 - Inflation expectations important for CBs
 - outside crises expectations are anchored
@@ -61,6 +61,7 @@ D’Acunto (2022):
 
 
 Dräger,Lamla (2012):
+
 - dont know that much about formation of inflation expectations
 - looking at updating behavior of people in the michigan survey
 - Idea is to look at the participants that are interviewed twice six months later. Have they changed their expectations or not?
@@ -68,6 +69,7 @@ Dräger,Lamla (2012):
 
 
 Dräger and Lamla (2017):
+
 - Uses micro-data from the michigan survey from 78-2011, since 87 same number of participants in the survey
 - volatility in inflation leads to updating of expectations
 - hearing news about inflation increases probability of updating
@@ -81,6 +83,7 @@ Dräger and Lamla (2017):
 - imperfect information plays important role for formation of expectations about inflation
 
 Dräger and Lamla (2018):
+
 - analyzing co-movement of short and long-term inflation expectations
 - older people react more and change their expectations, therefore are less anchored
 - illustrates different measurement strategies for anchoring
@@ -90,15 +93,18 @@ Dräger and Lamla (2018):
 
 
 Dräger and Nghiem (2018):
+
 - approximately 50% of respondents believed that inflation over the previous twelve months had been 5% or above, at a time when actual inflation was 0.3%.
 
 
 Ha et al.(2022):
+
 - expectations in EMDE, emerging countries, are less anchored and different than in delevoped countries
 - anchoring has increased, like in advanced economies
 
 
 Lucas(1975):
+
 - modelling of business cycle
 - imperfect information about prices and the economy is embedded into the model
 - in this behavior of the agents, their information about prices come from the market clearing prizes of the last periods, so their experiences in the past
@@ -107,6 +113,7 @@ P.1123: "the history of prices [. . .] observed by an individual is his source o
 
 
 Powell(2022):
+
 - P.1: "The labor market is very strong, and inflation is much too high."
 - rise of inflation greater than expected
 - supply-side frictions cause present inflation
@@ -117,6 +124,7 @@ Powell(2022):
 
 
 Weber(2021):
+
 - inflation expectations are essential for economics
 - your perception of future prices influences todays buying decisions. if this holds true expectations about future matter today
 - explains upward bias

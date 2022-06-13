@@ -35,7 +35,7 @@ SCE_Data <- read_excel("DATA/FRBNY-SCE-Data.xlsx", sheet = "Inflation expectatio
 
 #rename columns, change format of the date column
 SCE_Data <- SCE_Data %>%
-  rename(Median=`Median one-year ahead expected inflation rate`,Lower_quantil=`25th Percentile one-year ahead expected inflation rate`, Upper_quantil=`75th Percentile one-year ahead expected inflation rate`,Point_prediction=`Median point prediction one-year ahead inflation rate`)%>%
+  rename(Median=`Median one-year ahead expected inflation rate`,"Lower Quantil"=`25th Percentile one-year ahead expected inflation rate`, "Upper Quantil"=`75th Percentile one-year ahead expected inflation rate`,"Point Prediction"=`Median point prediction one-year ahead inflation rate`)%>%
   mutate(Date=...1*100+1)%>%
   select(c(2,4,6,8,10))%>%
   relocate(Date, .before = Median)
@@ -91,7 +91,7 @@ SCE_plot <- select(SCE_Data_summary,c(1:5))%>%
 
 
 #reihenfolge der quantile
-SCE_plot$Measures <- factor(SCE_plot$Measures, levels = c("Lower_quantil","Median","Point_prediction","Upper_quantil"))
+SCE_plot$Measures <- factor(SCE_plot$Measures, levels = c("Lower Quantil","Median","Point Prediction","Upper Quantil"))
 
 
 ggplot(data=SCE_plot) + aes(x=Date, y = Expectations, color = Measures) + geom_line(size=0.8)+scale_color_viridis(discrete = TRUE)+labs(x="Years", y="Monthly Expectations")+scale_x_date(date_labels = "%Y",date_breaks = "2 years")+ theme_minimal()
@@ -117,10 +117,10 @@ ggplot(data=SCE_plot) + aes(x=Date, y = Expectations, color = Measures) + geom_l
 #sub-data sets for both intervals
 
 SCE_Data_01 <- SCE_Data_summary%>%
-  filter(Date<"2020-05-01")
+  filter(Date<"2020-03-01")
 
 SCE_Data_02 <- SCE_Data_summary%>%
-  filter(Date>"2020-04-01")
+  filter(Date>"2020-02-01")
 
 
 #summary for first interval 13-20
@@ -131,9 +131,9 @@ sum_01 <- SCE_Data_01%>%
   relocate(Measure, .before = Mean)
 
 sum_02 <- SCE_Data_01%>%
-  summarise(Mean = mean(Point_prediction),
-            Volatility = sd(Point_prediction))%>%
-  mutate(Measure="Point prediction")%>%
+  summarise(Mean = mean(`Point Prediction`),
+            Volatility = sd(`Point Prediction`))%>%
+  mutate(Measure="Point Prediction")%>%
   relocate(Measure, .before = Mean)
 
 sum_03 <- SCE_Data_01%>%
@@ -158,9 +158,9 @@ sum_05 <- SCE_Data_02%>%
   relocate(Measure, .before = Mean)
 
 sum_06 <- SCE_Data_02%>%
-  summarise(Mean = mean(Point_prediction),
-            Volatility = sd(Point_prediction))%>%
-  mutate(Measure="Point prediction")%>%
+  summarise(Mean = mean(`Point Prediction`),
+            Volatility = sd(`Point Prediction`))%>%
+  mutate(Measure="Point Prediction")%>%
   relocate(Measure, .before = Mean)
 
 sum_07 <- SCE_Data_02%>%
@@ -184,7 +184,7 @@ sum_08 <- SCE_Data_02%>%
 
 
 ```{r,echo=FALSE, warning=FALSE}
-summary_01 <- bind_rows(sum_01,sum_02, sum_03)  
+summary_01 <- bind_rows(sum_01,sum_02, sum_03, sum_04)  
 
 
 #darstellung mit kableExtra
@@ -194,7 +194,7 @@ summary_01 <- bind_rows(sum_01,sum_02, sum_03)
 ```
 
 ```{r,echo=FALSE, warning=FALSE}
-summary_02 <- bind_rows(sum_04,sum_05,sum_06)  
+summary_02 <- bind_rows(sum_05,sum_06,sum_07,sum_08)  
 
 
 #darstellung mit kableExtra
@@ -218,14 +218,15 @@ summary_02 <- bind_rows(sum_04,sum_05,sum_06)
 
 SCE_Data_age <- SCE_Data_summary%>%
   select(c(1,7:9))%>%
+  rename(`Under 40`=`Age Under 40`,`40-60`=`Age 40-60`,`Over 60`=`Age Over 60`)%>%
   pivot_longer(cols=c(2:4), names_to = "Age Groups", values_to = "Expectations", values_drop_na = FALSE)
 
 #Rang of Age Groups
-SCE_Data_age$`Age Groups` <- factor(SCE_Data_age$`Age Groups`, levels = c("Age Under 40","Age 40-60","Age Over 60"))
+SCE_Data_age$`Age Groups` <- factor(SCE_Data_age$`Age Groups`, levels = c("Under 40","40-60","Over 60"))
 
 
 ggplot(data=SCE_Data_age, aes(x=Expectations, group=`Age Groups`, fill=`Age Groups`)) + geom_density(adjust=0.8, alpha=0.75) + scale_fill_viridis(discrete=TRUE) +
-    scale_color_viridis(discrete=TRUE) + labs(x="Inflation Expectations",y="Distribution")+scale_x_continuous(breaks = seq(0, 8, by = 1))+ theme_minimal()
+    scale_color_viridis(discrete=TRUE) + labs(x="Inflation Expectations",y="Density")+scale_x_continuous(breaks = seq(0, 8, by = 1))+ theme_minimal()
 
 ```
 
@@ -243,7 +244,7 @@ SCE_Data_ed$`Education Levels` <- factor(SCE_Data_ed$`Education Levels`, levels 
 
 
 ggplot(data=SCE_Data_ed, aes(x=Expectations, group=`Education Levels`, fill=`Education Levels`)) + geom_density(adjust=0.8, alpha=0.75) + scale_fill_viridis(discrete=TRUE) +
-    scale_color_viridis(discrete=TRUE) + labs(x="Inflation Expectations",y="Distribution")+scale_x_continuous(breaks = seq(0, 7, by = 1))+ theme_minimal()
+    scale_color_viridis(discrete=TRUE) + labs(x="Inflation Expectations",y="Density")+scale_x_continuous(breaks = seq(0, 7, by = 1))+ theme_minimal()
 
 ```
 
@@ -279,7 +280,11 @@ ggplot(data=infl_plot) + aes(x=Date, y =`Relative Rankings`, color =`Searched Te
 - inflation and inflation rate are very similar in their relative search frequency
 - we will later combine these data with the SCE data set in some regression models
 
+We are now able to look at first results for our two hypothesis:
 
+-there is a positive correlation between aggregated inflation expectations and uncertainty, Google searches and the actual inflation
+-there is a positive correlation between Google searches and updating behavior of individual consumers
 
+Without regression we can still see higher volatility in inflation expectations and higher spreads between the upper and lower quantil. This implies higher uncertainty leads to higher inflation expectations. The time series for Google Searches shows a similar behavior like the SCE time series for Inflation expectations. This hints to a link between searching behavior and a rise in inflation in the last two years. In the next chapter we will first introduce the microdata for the SCE survey, compute aspects of updating behavior and proof our hypothesis with several regressions.
 
 \newpage
