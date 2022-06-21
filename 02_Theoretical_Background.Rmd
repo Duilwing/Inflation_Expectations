@@ -67,10 +67,7 @@ Dräger,Lamla (2012):
 - Idea is to look at the participants that are interviewed twice six months later. Have they changed their expectations or not?
 - findings: updating on quantitative questions every 8 months, qualitative every 16 months about one-year-ahead inflation. in recessions updating behavior increases, therefore adjustments about the expectations are correlated with the business cycle. long-term less often adjusted than short-term
 
-
-Dräger and Lamla (2017):
-
-- Uses micro-data from the michigan survey from 78-2011, since 87 same number of participants in the survey
+@Drager.2017:
 - volatility in inflation leads to updating of expectations
 - hearing news about inflation increases probability of updating
 - uses again the rotating structure of the panel to analyze updating
@@ -81,6 +78,7 @@ Dräger and Lamla (2017):
 - professionals change their expectations, that triggers consumers
 - information has no long-term effect
 - imperfect information plays important role for formation of expectations about inflation
+
 
 Dräger and Lamla (2018):
 
@@ -139,5 +137,9 @@ Weber(2021):
 
 ## Our Hypotheses
 
--there is a positive correlation between aggregated inflation expectations and uncertainty, Google searches and the actual inflation
--there is a positive correlation between Google searches and updating behavior of individual consumers
+
+\begin{itemize}
+  \item \(H_1:\) There is a positive correlation between aggregated inflation expectations and uncertainty, Google searches and the actual inflation.
+  \item \(H_2:\) There is a positive correlation between Google searches and updating behavior of individual consumers.
+\end{itemize}
+

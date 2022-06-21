@@ -6,17 +6,11 @@ output:
 
 ## Updating Behavior
 
-- to analyze updating behavior and its relationship with google searches or inflation expectations we need to compute the updating behavior of individuals at the micro level of the SCE data set
-- we use the idea of dräger (ZITAT)
+Before we continue to explore the relationships between expectations and different variables within our data we have to take a look at the microdata of the SCE. To analyze individual behavior, for example in updating their exceptions and its relationship with google searches or inflation expectations this thesis uses a similar approach as in the paper "Updating inflation expectations: Evidence from micro-data" by @Drager. Dräger et al. use microdata from the Survey of Consumers conducted by the University of Michigan (MSC) from 78-2011. In this survey some participants are questioned a second time, whichs allows @Drager to show individual updating behavior by computing updating shares and updating frequency. 
+For the updating frequency @Drager receive eight or 16 months for the quantitative and qualitative questions targeting at inflation expectations in the short run. @Drager demonstrate $74.1%$ in updating share for the quantitative and $38.2%$ for the qualitative answer, with higher spreads for the qualitative answer. The crises of 2001 and 2008 also increased shares significantly.
+@Drager conclude that updating behavior depends on the business cycle fluctuations, with higher shares and frequency around crises and lower adjustments for stable conditions and long-term expectations.
 
-
-
-## Regressions
-
-- we look now at the updating behavior
-- analyzing this needs the micro data from the SCE
-
-
+This thesis validates these finding by analyzing the updating behavior of individuals within the SCE. For this, the focus is layed on the quantitative answers that are aggregated to the already established point prediction. 
 
 <!--Micro data by the SCE-->
 ```{r, echo=FALSE, warning= FALSE}
@@ -80,8 +74,8 @@ knitr::kable(SCE_micro_frequency_summary,
 #[1] 3.325523
 ```
 
+Table shows a summary for the updating frequency of the whole sample
 
--plotting density of updating frequency
 
 <!--Plot Micro data distribution of updating frequency by the SCE all in one-->
 ```{r, echo=FALSE, warning=FALSE, fig.cap = "Distribution of Updating Frequency from the Micro-data"}
@@ -91,6 +85,7 @@ ggplot(data=SCE_micro_frequency, aes(x=`Updating Frequency`)) + geom_density(adj
 
 ```
 
+Figure shows the density for the updating frequency
 
 <!--Plot Micro data updating share by the SCE all in one-->
 ```{r, echo=FALSE, warning=FALSE, fig.cap = "Updating Shares from the Micro-data"}
@@ -103,6 +98,11 @@ SCE_micro_summary <-bind_cols(SCE_micro_1, SCE_micro_2[2])%>%
 ggplot(data=SCE_micro_summary) + aes(x=Date, y = `Updating share`) + geom_line(size=1,color="#440154FF")+labs(x="Years",y="Updating Share")+scale_x_date(date_labels = "%Y",date_breaks = "year")+ theme_minimal()
 
 ```
+
+Figure shows the updating share over the whole sample
+
+
+## Regressions
 
 -due to the shorter time series for the micro data we build two different regression tables with them we perform the different regressions
 

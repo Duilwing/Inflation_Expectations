@@ -282,8 +282,11 @@ ggplot(data=infl_plot) + aes(x=Date, y =`Relative Rankings`, color =`Searched Te
 
 We are now able to look at first results for our two hypothesis:
 
--there is a positive correlation between aggregated inflation expectations and uncertainty, Google searches and the actual inflation
--there is a positive correlation between Google searches and updating behavior of individual consumers
+\begin{itemize}
+  \item \(H_1:\) There is a positive correlation between aggregated inflation expectations and uncertainty, Google searches and the actual inflation.
+  \item \(H_2:\) There is a positive correlation between Google searches and updating behavior of individual consumers.
+\end{itemize}
+
 
 Without regression we can still see higher volatility in inflation expectations and higher spreads between the upper and lower quantil. This implies higher uncertainty leads to higher inflation expectations. The time series for Google Searches shows a similar behavior like the SCE time series for Inflation expectations. This hints to a link between searching behavior and a rise in inflation in the last two years. In the next chapter we will first introduce the microdata for the SCE survey, compute aspects of updating behavior and proof our hypothesis with several regressions.
 
