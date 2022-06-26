@@ -86,12 +86,12 @@ SCE_Data_summary <-bind_cols(SCE_Data, SCE_Data_unc[2],SCE_Data_demo[2:7],cpi[2]
 ```{r,echo=FALSE, warning=FALSE, fig.cap = "Short-term Expectations from 2013-present"}
 
 #pivot longer
-SCE_plot <- select(SCE_Data_summary,c(1:5))%>%
-  pivot_longer(cols=c(2:5), names_to = "Measures", values_to = "Expectations", values_drop_na = FALSE)
+SCE_plot <- select(SCE_Data_summary,c(1,2,3,4,5,13))%>%
+  pivot_longer(cols=c(2:6), names_to = "Measures", values_to = "Expectations", values_drop_na = FALSE)
 
 
 #reihenfolge der quantile
-SCE_plot$Measures <- factor(SCE_plot$Measures, levels = c("Lower Quantil","Median","Point Prediction","Upper Quantil"))
+SCE_plot$Measures <- factor(SCE_plot$Measures, levels = c("Lower Quantil","CPI","Median","Point Prediction","Upper Quantil"))
 
 
 ggplot(data=SCE_plot) + aes(x=Date, y = Expectations, color = Measures) + geom_line(size=0.8)+scale_color_viridis(discrete = TRUE)+labs(x="Years", y="Monthly Expectations")+scale_x_date(date_labels = "%Y",date_breaks = "2 years")+ theme_minimal()

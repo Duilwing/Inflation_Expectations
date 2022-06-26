@@ -10,5 +10,7 @@ Thoughts:
 
  
 Ideas:
-- Google Searches about Inflation as a proxy for expectation formation
 - positive correlation between crises like corona and updating behavior and therefore inflation expectations by looking at survey data and google-trends
+- micro regression the other way around
+- VaR modelling
+- data cleaning(As in @Drager.2017 the upper and lower 2.5% of all values are excluded to control for outliers in the questionnaire. )

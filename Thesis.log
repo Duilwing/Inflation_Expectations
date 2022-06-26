@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.3.29)  21 JUN 2022 14:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.3.29)  26 JUN 2022 22:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -883,34 +883,34 @@ Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-20-1.pdf  used
 (pdftex.def)             Requested size: 398.34032pt x 275.77405pt.
 [9 <./Thesis_files/figure-latex/unnamed-chunk-17-1.pdf>] [10 <./Thesis_files/fi
 gure-latex/unnamed-chunk-18-1.pdf> <./Thesis_files/figure-latex/unnamed-chunk-2
-0-1.pdf>] [11]
-<Thesis_files/figure-latex/unnamed-chunk-22-1.pdf, id=176, 469.755pt x 325.215p
+0-1.pdf>] [11] [12]
+<Thesis_files/figure-latex/unnamed-chunk-24-1.pdf, id=182, 469.755pt x 325.215p
 t>
-File: Thesis_files/figure-latex/unnamed-chunk-22-1.pdf Graphic file (type pdf)
-<use Thesis_files/figure-latex/unnamed-chunk-22-1.pdf>
-Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-22-1.pdf  used
- on input line 804.
+File: Thesis_files/figure-latex/unnamed-chunk-24-1.pdf Graphic file (type pdf)
+<use Thesis_files/figure-latex/unnamed-chunk-24-1.pdf>
+Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-24-1.pdf  used
+ on input line 817.
 (pdftex.def)             Requested size: 398.34032pt x 275.77405pt.
-<Thesis_files/figure-latex/unnamed-chunk-23-1.pdf, id=177, 469.755pt x 325.215p
+<Thesis_files/figure-latex/unnamed-chunk-25-1.pdf, id=183, 469.755pt x 325.215p
 t>
-File: Thesis_files/figure-latex/unnamed-chunk-23-1.pdf Graphic file (type pdf)
-<use Thesis_files/figure-latex/unnamed-chunk-23-1.pdf>
-Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-23-1.pdf  used
- on input line 812.
+File: Thesis_files/figure-latex/unnamed-chunk-25-1.pdf Graphic file (type pdf)
+<use Thesis_files/figure-latex/unnamed-chunk-25-1.pdf>
+Package pdftex.def Info: Thesis_files/figure-latex/unnamed-chunk-25-1.pdf  used
+ on input line 823.
 (pdftex.def)             Requested size: 398.34032pt x 275.77405pt.
-[12] [13 <./Thesis_files/figure-latex/unnamed-chunk-22-1.pdf> <./Thesis_files/f
-igure-latex/unnamed-chunk-23-1.pdf>] [14] [15] [16] [17] [18] [19] [20] [21] [2
-2] (Thesis.aux)
+[13 <./Thesis_files/figure-latex/unnamed-chunk-24-1.pdf>] [14 <./Thesis_files/f
+igure-latex/unnamed-chunk-25-1.pdf>] [15] [16] [17] [18] [19] [20] [21] [22] (T
+hesis.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 17577 strings out of 478582
- 292981 string characters out of 2843400
- 640059 words of memory out of 3000000
+ 17583 strings out of 478582
+ 293043 string characters out of 2843400
+ 639059 words of memory out of 3000000
  35219 multiletter control sequences out of 15000+600000
- 522197 words of font info for 127 fonts, out of 8000000 for 9000
+ 522446 words of font info for 130 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  74i,11n,77p,1005b,449s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/LucaStr/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}
@@ -930,7 +930,7 @@ mri10.pfb><C:/Users/LucaStr/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
 lm/lmss12.pfb><C:/Users/LucaStr/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/lm/lmsy10.pfb><C:/Users/LucaStr/AppData/Local/Programs/MiKTeX/fonts/type1/pub
 lic/lm/lmsy8.pfb>
-Output written on Thesis.pdf (25 pages, 345606 bytes).
+Output written on Thesis.pdf (25 pages, 352912 bytes).
 PDF statistics:
  386 PDF objects out of 1000 (max. 8388607)
  81 named destinations out of 1000 (max. 500000)
