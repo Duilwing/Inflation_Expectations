@@ -1,25 +1,5 @@
-This thesis wants to analyze the formation and updating behavior of inflation expectations of US households from 2012-today, particular in the last two years. By combining aggregated and micro data from the Survey of Consumers Expectations and data from Google Trends about search terms like "inflation" it will be possible to determine when households update their knowledge and therefore their short-term expectations.
+Since the last two years inflation has been risen to levels even professional forecasters have never expected (@Powell.2022). This development bears high risks as stable and low inflation rates are a necessity for a healthy economy(@Brainard.2022). Inflation rates play a significant part in determining the economic conditions as @Bernanke.2007 explains in his speech "Inflation Expectations and Inflation Forecasting". Low inflation coincides with "growth, efficiency, and stability" (@Bernanke.2007, S.2), as high inflation can lead to uncertainty and losses in public confidence (@Bernanke.2007). Another important aspect of inflation are inflation expectations for their influence on economic policy(@Drager.2017) and the spending behavior of consumers (@Drager.2021). For example, in the last two years, particular with the beginning of the Russian assault on Ukraine, inflation expectations of German households increased and have become more uncertain (@Afunts.2022).
 
-After a presentation of the theoretical background to inflation expectations we conduct a short descriptive analysis of the one-year expectations from the last ten years as a whole and two sub-sets. This analysis also focus on differences between certain age cohorts and other properties provided by the SCE. After the presentation of the SCE data set we exercise similar operations for the results from the Google Trends data.
-
-After the descriptive analysis we conduct further analyses by combining both data sets to show the relationship between Google searches and changes in inflation expectations. We look at correlation between expectations and uncertainty, google searches and the actual CPI and in a second model the relationship between google searches and micro-data.
-
-
-Research question: 
-- Under which circumstances and how often do households update their inflation expectations?
-
-
-Used Papers: 
-
-Afunts(2022):
-- ukraine war has risen inflation expectations of german households, both short- and long-term
-- used the Bundesbank Online Panel of Households (BOP-HH) with about 6,000
-respondents in January, February, and March 2022
-
-Brainard(2022):
-- inflation bears high risks
-- stable and low inflation key for economy and labor market
-
-Bernanke(2007):
-- explains risks of inflation, benefits of low stable inflation
-- gives an definition what anchored expectations mean
+This thesis wants to analyze the formation and updating behavior of inflation expectations of US households with the help of survey data. By combining data from the Survey of Consumers Expectations and Google search terms it will be possible to determine under what circumstances do households update their knowledge and therefore their short-term expectations.
+After a presentation of the literature the hypotheses for the further analysis are formulated. In Chapter 3 a short descriptive analysis of the one-year expectations from the last ten years is conducted which also focuses on differences between demographic characteristics like age, education and income. The time series for Google Trends is presented in a similar way. 
+Following the descriptive analysis computations on the updating behavior with the available micro data are executed. At last regressions show the relationship between expectations and uncertainty, actual inflation, searching behavior and updating behavior.

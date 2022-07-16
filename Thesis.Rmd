@@ -76,39 +76,15 @@ library(tinytex)
 ```{r child='04_Results.Rmd'}
 ```
 
-# Robustness and Limitations
+# Limitations
 
-```{r child='05_Robustness and Limitations.Rmd'}
+```{r child='05_Limitations.Rmd'}
 ```
 
 # Conclusion
 
 ```{r child='06_Conclusion.Rmd'}
 ```
-
-<!-- this command \appendix changes the numbering of sections to alphabetical -->
-
-```{=tex}
-\appendix
-\newpage
-```
-
-
-\newpage
-
-# Tables
-
-```{r child='A2_Tables.Rmd'}
-```
-
-\newpage
-
-# Figures
-
-```{r child='A3_Figures.Rmd'}
-```
-
-
 <!-- Makes sure to have a new page for your literature -->
 
 \newpage
