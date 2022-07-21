@@ -6,7 +6,7 @@ output:
 
 ## Updating Behavior
 
-To analyze individual behavior, for example in updating their expectations, and the relationship with Google searches this thesis uses a similar approach as in the paper "Updating inflation expectations: Evidence from micro-data" by @Drager.2017. Dräger et al. use microdata from the Survey of Consumers conducted by the University of Michigan (MSC) from 78-2011. In this survey some participants are questioned a second time, whichs allows @Drager.2017 to show individual updating behavior by computing updating shares and updating frequency. For the updating frequency @Drager.2017 receive 8 or 16 months for the quantitative and qualitative questions targeting at inflation expectations in the short run. @Drager.2017 demonstrate $74.1%$ in updating share for the quantitative and $38.2%$ for the qualitative answer, with higher spreads for the qualitative answer. The crises of 2001 and 2008 also increased shares significantly. @Drager.2017 conclude that updating behavior depends on the business cycle fluctuations, with higher shares and frequency around crises and lower adjustments for stable conditions and long-term expectations.
+To analyze individual updating behavior this thesis uses the approach presented in the paper "Updating inflation expectations: Evidence from micro-data" by @Drager.2017. Dräger et al. use microdata from the Survey of Consumers conducted by the University of Michigan (MSC) from 78-2011. In this survey some participants are questioned a second time, which allows @Drager.2017 to show individual updating behavior by computing updating shares and updating frequency. For the updating frequency @Drager.2017 receive 8 months for the quantitative and 16 months for the qualitative questions targeting at inflation expectations in the short run. @Drager.2017 demonstrate $74.1%$ in updating share for the quantitative and $38.2%$ for the qualitative answer, with higher spreads for the qualitative answer. The crises of 2001 and 2008 also increased shares significantly. @Drager.2017 conclude that updating behavior depends on business cycle fluctuations, with higher shares and frequency around crises and lower adjustments for stable conditions and long-term expectations.
 
 <!--Clean environment-->
 ```{r, echo=FALSE, warning= FALSE}
@@ -95,29 +95,33 @@ SCE_micro_frequency_summary <- SCE_micro_frequency%>%
   mutate(Measure="Updating Frequency")%>%
   relocate(Measure, .before = Mean)
 
-
-#table for the frequency
-knitr::kable(SCE_micro_frequency_summary,
-  digits = 4,caption="Summary for Updating Frequency")%>%
-    kable_styling(latex_options = c("striped"))
-
 #avg. frequency in months
 #mean(SCE_micro_frequency$Tenure)*mean(SCE_micro_frequency$`Updating Frequency`)
 #frequency:
 #tenure:
 ```
 
-This thesis investigates these finding by analyzing the updating behavior of individuals within the SCE. For this, the focus is layed on the quantitative answers that are aggregated to the already established point prediction. As in @Drager.2017, the upper and lower 2.5% of the distribution are detected as outliers and therefore are rejected from the analysis.
-After combining all available microdata published by the SCE the updating frequency of all participants is presented in Table 3. The average updating frequency is determined as 0.4998. With an average tenure of  9 months, participants update their expectations around five times within the survey. 
+The thesis investigates these finding by analyzing the updating behavior of individuals within the SCE for the quantitative answers that are aggregated to the already established point prediction. As in @Drager.2017, the upper and lower 2.5% of the distribution are detected as outliers and therefore rejected from the analysis. After combining all published microdata the updating frequency of all participants is presented in Table 3. The average updating frequency is determined as 0.4998. With an average tenure of 9 months, therefore participants update their expectations around five times within the survey. 
 
-Figure 4 shows the density function for the whole sample distinguished for the three age categories. Other demographic differences like education and income result in similar distributions. As clearly seen all age groups follow a general pattern with only minor differences. There is a significant part of participants that do not upgrade their expectations at all. This behavior is shown by around 7.5%  of participants in the whole sample and coincides with a smaller tenure of 5  months. Due to the limitations of the available microdata it is not possible to distinguish between the same two time intervals as for the aggregated data.
+
+<!--Micro data by the SCE Part3-->
+```{r, echo=FALSE, warning= FALSE, fig.pos="H"}
+#table for the frequency
+knitr::kable(SCE_micro_frequency_summary,
+  digits = 4,caption="Summary for Updating Frequency")%>%
+    kable_styling(latex_options = c("striped"))
+```
+
+
+
+Figure 4 shows the density function for the whole sample distinguished by age. Other demographic differences like education and income result in similar distributions. As clearly seen all age groups follow a general pattern with only minor differences. There is a significant part of participants that do not upgrade their expectations at all. This behavior is shown by around 7.5%  of participants in the whole sample and coincides with a smaller tenure of 5  months. Due to the limitations of the available microdata it is not possible to distinguish between the same two time intervals as for the aggregated data.
 
 <!--Plot Micro data distribution of updating frequency by the SCE all in one-->
 ```{r, echo=FALSE, warning=FALSE, fig.cap = "Density Functions of the Updating Frequency"}
 #reihenfolge
 SCE_micro_frequency$`Age Groups` <- factor(SCE_micro_frequency$`Age Groups`, levels = c("Under 40","40 to 60","Over 60"))
 
-ggplot(data=SCE_micro_frequency, aes(x=`Updating Frequency`, group=`Age Groups`, fill=`Age Groups`)) + geom_density(adjust=0.8, alpha=0.75) + scale_fill_viridis(discrete=TRUE) +scale_color_viridis(discrete=TRUE) + labs(x="Updating Frequency",y="Density")+scale_x_continuous(breaks = seq(0, 10, by = 1))+ theme_minimal()
+ggplot(data=SCE_micro_frequency, aes(x=`Updating Frequency`, group=`Age Groups`, fill=`Age Groups`)) + geom_density(adjust=0.8, alpha=0.75) + scale_fill_viridis(discrete=TRUE) +scale_color_viridis(discrete=TRUE) + labs(x="Updating Frequency",y="Density")+scale_x_continuous(breaks = seq(0, 10, by = 0.2))+ theme_minimal()
 
 ```
 
@@ -177,7 +181,7 @@ x <- ggplot(data=SCE_micro_summary) + aes(x=Date, y = `Updating share`, color = 
 
 ```
 
-Figure 5 plots the updating share over the whole sample again for Age, Education and Income. Over the full sample the average updating share lies at 55.63%. All three age groups show similar behavior with old participants expressing slightly higher updating shares. For Education higher educated participants show lower updating shares which could hint at already existing knowledge about actual inflation. For Income it is possible to detect a negative relationship between Income and updating, as poorer participants have slighty higher values for the updating share. The microdata reveal for all three demographics an updating spike at the beginning of the Covid19-Crises but can not show a possible manifestation of this trend due to the lack of data after July 2021.
+Figure 5 plots the updating share for age, education and income. Over the full sample the average updating share lies at 55.63%. All three age groups show similar behavior with old participants expressing slightly higher updating shares. Higher educated participants show lower updating shares which could hint at already existing knowledge about actual inflation. For income it is possible to detect a negative relationship between income and updating, as poorer participants have higher values for the updating share. The microdata reveal for all three demographics an updating spike at the beginning of the Covid19-Crises but can not show a possible manifestation of this trend due to missing data after July 2021.
 
 Comparing the results with the findings of @Drager.2017, fewer participants in the SCE update their expectations every month, but with a higher frequency. The spike in updating share at the beginning of the Covid19-Crises can be interpreted as a reaction to the business cycle as shown by @Drager.2017.
 
@@ -316,23 +320,25 @@ rm(list=ls()[! ls() %in% c("SCE_Data_summary","infl_summary", "SCE_micro","SCE_m
 
 ```
 
-After the descriptive analyses of the provided aggregated data, the presentation of demographic differences in inflation expectations and the use of microdata to display individual updating behavior this sub chapter puts a light on the relationships that influence inflation expectations. Due to the shorter time series for the micro data two different regression tables are build to perform the regressions. To avoid heteroscedasticity only the search term inflation is used in assumption that there is a significant overlap between both search terms.
+After the descriptive analyses of the provided aggregated data, the presentation of demographic differences and the use of microdata to display individual updating behavior this sub chapter puts a light on the relationships that influence inflation expectations. Due to the shorter time series for the micro data two different regression tables are build. To avoid heteroscedasticity only the search term inflation is used in assumption that there is a significant overlap between both search terms.
 
 ### Regressions with Aggregated Data
 
 To test the first hypothesis the aggregated data are used for two regression models:
 
 \begin{itemize}
-  \item \(H_1:\) $Uncertainty ~ GS_infl+CPI$
-  \item \(H_2:\) $Point prediction ~ GS_infl+Uncertainty+CPI$
+        \item \emph{Uncertainty \raisebox{-0.9ex}{\~{}} GS\_infl+CPI}
+        \item \emph{Point prediction \raisebox{-0.9ex}{\~{}} GS\_infl+Uncertainty+CPI}
 \end{itemize}
+
+
 
 As previously done in Chapter 3 all regressions are conducted for the two sub time-series to analyze differences in the correlations.
 
 <!--Regressions-->
 ```{r, include=FALSE, warning= FALSE}
 #transfer data into big regression summary, but without updating behavior
-SCE_Data_regressions <-bind_cols(SCE_Data_summary,infl_summary[42:148,2:3])%>%
+SCE_Data_regressions <-bind_cols(SCE_Data_summary,infl_summary[42:150,2:3])%>%
   rename(GS_infl=Inflation, GS_infl_r=`Inflation rate`)
 
 #second regression table for updating and Google searches
@@ -368,7 +374,7 @@ stargazer(model1,model2,header=FALSE,type='latex',model.numbers= FALSE,title = "
 
 ```
 
-The results for the whole sample are presented in Table 4. As seen in the first model searching behavior and actual inflation both play a significant role for Uncertainty. Searching for inflation increases uncertainty, but with a weaker effect as actual inflation. In the second model, significant values for Uncertainty and CPI demonstrate the influence of actual inflation for the point estimation.
+The results for the whole sample are presented in Table 4. Searching behavior plays a significant role for uncertainty and point prediction but with a higher significance and influence for uncertainty. Searching for inflation increases uncertainty and the point prediction. In both models significant values for CPI demonstrate the influence of actual inflation for expectations. Uncertainty as a variable also shows a positive influence on inflation expectations.
 
 <!--Regression Model aggregated data sub-->
 ```{r, echo=FALSE, warning=FALSE}
@@ -396,7 +402,7 @@ stargazer(model1_01,model2_01, header=FALSE, type='latex',model.numbers= FALSE,t
 ```
 
 
-Table 5 shows the results for the first time interval. CPI and searching behavior have a negative effect on uncertainty, which hints at a stabilization effect for the distribution of expectations. Uncertainty has now the highest value of 1.447. A weaker Adj. $R^2$. could be due to overall stable expectations and low inflation in the first time interval.
+Table 5 shows the results for the first time interval. CPI and searching behavior have a significant negative effect on uncertainty, which hints at a stabilization effect for the distribution of expectations. Uncertainty has now the highest value of 1.465. A weaker Adj. $R^2$. for both models could be due to overall stable expectations and low inflation in the first time interval.
 
 <!--Regression Models aggregated data sub2-->
 ```{r, echo=FALSE, warning=FALSE, results='asis'}
@@ -414,8 +420,10 @@ stargazer(model1_02,model2_02, header=FALSE, type='latex',model.numbers= FALSE,t
 
 ```
 
-The regressions for the second interval are presented in Table 6. In the first model only CPI has a significant value. Searches for inflation now positively correlate with the Point Prediction in the second model. In both models actual inflation has the biggest influence of all three intervals, which shows the importance of the increase in inflation for inflation expectations. Both models also show higher values for Adj. $R^2$ in all three models than in first intervals.
-In conclusion, all three regression tables show the importance of actual inflation, but also searching behavior for distribution and point estimation of inflation expectations.
+The regressions for the second interval are presented in Table 6. In the first model only CPI has a significant value. Searches for inflation now positively correlate with the point prediction in the second model, while uncertainty has now the smallest influence on the point prediction. In both models actual inflation has the biggest influence of all three intervals, which shows the importance of the increase in inflation for inflation expectations. Both models also show higher values for Adj. $R^2$ in all three models than in first intervals. The regressions for Table 6 therefore show, that in the last two years searching behavior has increased expectations while the role of actual inflation has become even more imprtant than before.
+In conclusion, all three regression tables show the importance of actual inflation, but also the influence of searching behavior for the distribution and the estimation of inflation expectations.
+
+\newpage
 
 ### Regressions with Microdata
 
@@ -454,10 +462,10 @@ stargazer(model1_prop,model2_prop,model3_prop,model4_prop,header=FALSE, type='la
 After the regressions for properties the microdata are used for the second hypothesis with the following regression models:
 
 \begin{itemize}
-  \item $Updating share ~ GS_infl$
-  \item $Updating share ~ Uncertainty$
-  \item $GS_infl ~ Updating share$
-  \item $Uncertainty ~ Updating share$
+        \item \emph{Updating share \raisebox{-0.9ex}{\~{}} GS\_infl}
+        \item \emph{Updating share \raisebox{-0.9ex}{\~{}} Uncertainty}
+        \item \emph{GS\_infl \raisebox{-0.9ex}{\~{}} Updating share}
+        \item \emph{Uncertainty \raisebox{-0.9ex}{\~{}} Updating share}
 \end{itemize}
 
 <!--Regression Model micro data-->
@@ -474,4 +482,4 @@ stargazer(model1_micro,model2_micro,model3_micro,model4_micro, header=FALSE, typ
 
 ```
 
-Table 8 presents the four models for the microdata. For all models no significant values for Uncertainty, updating behavior or searching behavior can be found. This is combined with values for the Adj. $R^2$ at zero or below. This makes a proper interpretation almost impossible. Maybe the regressions show that in the first (stable) period updating behavior does not depend on searching behavior because consumers have no incentive to inform themselves as previous presented by @Coibion.2020.
+Table 8 presents the four models for the microdata. To control for possible reverse causality the last two models regress inflation searches and uncertainty on the updating share. For all models no significant values for Uncertainty, updating behavior or searching behavior can be found. This is combined with values for the Adj. $R^2$ at or below zero. This makes a proper interpretation almost impossible. Maybe the regression models show that in the first (stable) period updating behavior does not depend on searching behavior because consumers have no incentive to inform themselves as previous presented by @Coibion.2020.

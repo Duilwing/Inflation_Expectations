@@ -16,7 +16,7 @@ library(ggpubr) #Darstellung von mehreren plots in einer Abbildung
 
 ## The Dataset
 
-The high quality of public accessible surveys for households in the US allows to use them as a tool in analyzing the formation and evolution of inflation expectations (@Coibion.2020). This thesis uses the Survey of Consumer Expectations (SCE) founded in June 2013 by the New York FED. The survey consists as a rotating panel in which around 1,300 participants are asked about their views towards inflation, income or employment. The data used for this thesis are extracted with the questions Q8v2part2 and Q9. Here participants are first asked about their perception of short-term inflation. The answer is used to aggregate a point estimate for inflation expectations. After that participants have to give their subjective probabilities that inflation will be in different provided non-overlapping bins, for example the probability that inflation will be between 2% and 4%, to compute individual probability distributions.Further characteristics such as age or education are asked at the end of the survey. Each household is encouraged to participate at up to 12 follow-up surveys to analyse the evolution of individual expectations. @DAcunto.2022 list the SCE as one of the most common surveys due to the high number of participants, but see disadvantages resulting from the relative short time span. For more information @Weber.2021 gives a more detailed introduction of the survey.
+The high quality of public accessible surveys for households in the US allows to use them as a tool in analyzing the formation and evolution of inflation expectations (@Coibion.2020). This thesis uses the Survey of Consumer Expectations (SCE) founded in June 2013 by the Center for Microeconomic Data of the New York FED. The survey consists as a rotating panel in which around 1,300 participants are asked about their views towards inflation, income or employment. Regarding inflation participants are asked about their perception of short-term inflation. The answer is used to aggregate a point estimate for inflation expectations. After that participants have to give their subjective probabilities that inflation will be in different provided non-overlapping bins, for example the probability that inflation will be between 2% and 4%, to compute individual probability distributions. Further characteristics such as age or education are asked at the end of the survey. Each household is encouraged to participate at up to 12 follow-up surveys to analyse the evolution of individual expectations. @DAcunto.2022 list the SCE as one of the most common surveys due to the high number of participants, but see disadvantages resulting from the relative short time span. For more information, @Weber.2021 gives a more detailed introduction of the survey.
 
 <!--short term Expectations by the SCE-->
 ```{r, include=FALSE, warning= FALSE}
@@ -67,7 +67,6 @@ SCE_Data_summary <-bind_cols(SCE_Data, SCE_Data_unc[2],SCE_Data_demo[2:10],cpi[2
 
 ## Descriptive Statistics
 
-
 ```{r,echo=FALSE, warning=FALSE, fig.cap = "Short-term Expectations from 2013-present"}
 
 #pivot longer
@@ -85,7 +84,7 @@ ggplot(data=SCE_plot) + aes(x=Date, y = Expectations, color = Measures) + geom_l
 
 ```
 
-Figure 1 shows the one-year expectations since the introduction of the SCE. As measures, the point prediction extracted from the quantitative question and median, upper and lower quantile from the probability distribution are plotted. These aggregated expectations are combined with the actual inflation measured by the CPI. Upward bias as explained by @DAcunto.2022 can be detected as actual inflation remains significantly below the median and point prediction. Second, with the beginning of the COVID-19 pandemic, expectations and actual inflation are less biased and move now much more closely which confirm previously presented theories about rational inattention, for example in @Cavallo.2017.
+Figure 1 shows measures for the one-year expectations and actual inflation from June 2013 to June 2022. The point prediction extracted from the quantitative question and median, upper and lower quantile from the probability distribution are plotted. Upward bias as explained by @DAcunto.2022 can be detected as actual inflation remains significantly below the median and point prediction. With the beginning of the COVID-19 pandemic, expectations and actual inflation are less biased and move now much more closely which confirms previously presented theories about rational inattention, for example in @Cavallo.2017.
 
 <!--Descriptive summaries-->
 ```{r, include=FALSE, warning= FALSE}
@@ -153,8 +152,7 @@ sum_08 <- SCE_Data_02%>%
 
 ```
 
-
-To highlight the shifting in expectations over the last two years even more, the data are split into two intervals. Table 1 and 2 present different measures for both time intervals. It is possible to distinguish between a relatively stable phase until 2020 and an increase of the median, point prediction, CPI and uncertainty, defined as the spread between upper and lower quantile of expectations (@SCE.2022). Volatility has also risen significantly with values of 0.2571 to 1.4169 for the median. @DAcunto.2022 describe this disagreement in their analysis with the roots lying in large economic shocks resulting from the ongoing pandemic. For the last several months it is possible to detect further increases in uncertainty and short-term expectations. This could be due to the start of the Russian invasion of Ukraine, as @Afunts.2022 and @Drager.2022 presents updating behavior of German households and professionals.
+To highlight the shifting in expectations over the last two years, the data are split into two intervals. Table 1 and 2 present different measures for both time intervals. It is possible to distinguish between a relatively stable phase until 2020 and an increase of the median, point prediction, CPI and uncertainty, defined as the spread between upper and lower quantile of expectations (@SCE.2022). Volatility has also risen significantly with values of 0.2571 to 1.5167 for the median. @DAcunto.2022 describe this disagreement in their analysis with the roots lying in large economic shocks resulting from the ongoing pandemic. For the last several months it is possible to detect further increases in uncertainty and short-term expectations. This could be due to the start of the Russian invasion of Ukraine as presented by @Afunts.2022 and @Drager.2022 for German households and professionals.
 
 ```{r,echo=FALSE, warning=FALSE}
 summary_01 <- bind_rows(sum_01,sum_02, sum_03, sum_04)  
@@ -176,13 +174,10 @@ summary_02 <- bind_rows(sum_05,sum_06,sum_07,sum_08)
     kable_styling(latex_options = c("striped"))
 ```
 
-\newpage
-
-
 ## Some Demographic Differences
 
 <!--Density function Age-->
-```{r, echo=FALSE, warning=FALSE}
+```{r echo=FALSE, warning=FALSE}
 #show distribution for Age and Education
 
 SCE_Data_age <- SCE_Data_summary%>%
@@ -247,14 +242,10 @@ ggarrange(ggplot(data=SCE_Data_age, aes(x=Expectations, group=Age, fill=Age)) + 
 
 ```
 
-Figure 2 shows the density of short-term inflation expectations of three different
-demographic characteristics, namely Age, Education and Income.
-The first plot presents the density for age groups. As often published age and expectations are positively correlated (see @DAcunto.2022). Due to higher inflation rates during the 70s and 80s older people are influenced by these experiences and report higher inflation rates as younger generations (@Malmendier.2016). Additionally, @Drager.2018 show with the help of the MSC dataset that older participants change their perceptions about inflation more often and are generally less anchored.
-
-The second plot presents the density of inflation expectations for three education levels, namely High School or less, College and BA or Higher as defined by the SCE. As clearly seen there are remarkable differences in inflation expectations. Participants with within the lowest education level are defined by a much higher volatility of 1.1499 as compared to 0.7939 for BA or Higher. Expectations for College and BA or Higher are more concentrated around the actual inflation target of western central banks. For college levels the figure shows a concentration around 3%, for BA or Higher two peaks at around 3% and the true inflation target of 2%. This shows the underlying relationship between education and knowledge about actual inflation as analyzed by @Weber.2021.
-
-The last sub figure plots the density for the three income levels. BA or Higher and an income level of over 100k show very similar densities, which could link to a high correlation between income, education and generally cognitive abilities (@Coibion.2020). Participants with lower income show more volatile expectations, which confirms the findings presented by @Weber.2021 that the bias in expectations and income of households are negatively correlated.
-
+Figure 2 shows the density of short-term inflation expectations for three different demographic characteristics, namely age, education and income.
+The first plot presents the density for age. As often published age and expectations are positively correlated (see @DAcunto.2022). Due to higher inflation rates during the 70s and 80s older people are influenced by these experiences and report higher inflation rates as younger generations (@Malmendier.2016). Additionally, @Drager.2018 show with the help of the MSC dataset that older participants change their perceptions about inflation more often and are generally less anchored.
+The second plot presents the density of inflation expectations for three education levels. As clearly seen there are remarkable differences in inflation expectations. Participants within the lowest education level are defined by a much higher volatility of 1.26 as compared to 0.90 for BA or Higher. Expectations for College and BA or Higher are more concentrated around the actual inflation target of western central banks. For college levels the figure shows a concentration around 3%, for BA or Higher two peaks at around 3% and the inflation target of 2%. This confirms the underlying relationship between education and knowledge about actual inflation as analyzed by @Weber.2021.
+The last sub figure plots the density for the three income levels. BA or Higher and an income level of over 100k show very similar densities, which could link to a high correlation between income, education and generally cognitive abilities (@Coibion.2020). Participants with lower income show more volatile expectations, which confirms the findings presented by @Weber.2021 that the bias in expectations and the income of households are negatively correlated.
 
 ## GoogleTrends Searches
 
@@ -263,7 +254,6 @@ The last sub figure plots the density for the three income levels. BA or Higher 
 #loading the data
 infl_US <- read_delim("DATA/infl_US.csv",delim = ";", escape_double = FALSE, col_types = cols(Monat = col_date(format = "%d/%m/%Y")), trim_ws = TRUE)
 
-infl_r_US <- read_delim("DATA/infl_r_US.csv",delim = ";", escape_double = FALSE, col_types = cols(Monat = col_date(format = "%d/%m/%Y")), trim_ws = TRUE)
 
 ```
 
@@ -271,20 +261,17 @@ infl_r_US <- read_delim("DATA/infl_r_US.csv",delim = ";", escape_double = FALSE,
 <!--Google trends for USA-->
 ```{r, echo=FALSE, warning=FALSE, fig.cap = "US Google Trends Results for Inflation and Inflation rate from 2010-present"}
 
-infl_summary <- bind_cols(infl_US,infl_r_US)%>%
-  select(c(1,2,4,))%>%
-  rename(Date=Monat...1,Inflation=`inflation: (Vereinigte Staaten)`,"Inflation rate"=`inflation rate: (Vereinigte Staaten)`)
+infl_summary <- (infl_US)%>%
+  rename(Date=Monat,Inflation=inflation,"Inflation rate"=`inflation rate`)
 
 infl_plot <- infl_summary%>%
   pivot_longer(cols=2:3, names_to = "Searched Terms", values_to = "Relative Rankings", values_drop_na = FALSE)
 
-ggplot(data=infl_plot) + aes(x=Date, y =`Relative Rankings`, color =`Searched Terms`) + geom_line(size=0.9,alpha=1)+scale_color_manual(values=c("#00798c","#B9314F"))+labs(x="Years")+scale_x_date(date_labels = "%Y",date_breaks = "1 year")+ theme_minimal()  
+ggplot(data=infl_plot) + aes(x=Date, y =`Relative Rankings`, color =`Searched Terms`) + geom_line(size=0.9,alpha=1)+scale_color_manual(values=c("#00798c","#B9314F"))+labs(x="Years")+scale_x_date(date_labels = "%Y",date_breaks = "2 years")+ theme_minimal()  
 
 
 ```
 
-Figure 3 presents the Google Trends results for the two searching terms "inflation" and "inflation rate" from 2010-present. The idea as presented by @Coppola.2015 is to use Google Searches as a proxy for updating behavior. @Coppola.2015 argue that in the absence of high quality data it is possible to "nowcasting" prices with the help of Google Trends. By looking at certain key words, in the case of this thesis inflation, the searching behavior can be compared with households' short-term inflation expectations. As we can see, there is a striking similarity in the evolution of Google Searches and short-term expectations. Like in Figure 1 we see stable behavior until 2022, after that spikes in the searching behavior. Searches for both key words move rather identical with only one exception around April 2021. Until 2021 both search terms move cyclical over the years with low searches in the summer and spikes around black friday and the holiday season. In conclusion, searches show a similar pattern like the expectations of households.
+Figure 3 presents the Google Trends results for the two searching terms "inflation" and "inflation rate" from 2010-present. The idea as presented by @Coppola.2015 is to use Google Searches as a proxy for updating behavior. @Coppola.2015 argue that it is possible to "nowcasting" prices with the help of Google Trends by looking at certain key words. Searches for both key words move rather identical with only one exception around April 2021. Until 2021 both search terms move cyclical over the years with low searches in the summer and spikes around black Friday and the holiday season. By comparing Figure 1 and 3 there is a striking similarity between expectations and searches. Like in Figure 1 stable behavior can be observed until 2022, which changes to spikes in the last two years. In conclusion, searches show a similar pattern to the expectations of households.
 
-By combining the results of the descriptive analysis it is possible to interpret higher volatility and uncertainty in inflation expectations in the last two years as a sign of an underlying relationship between uncertainty and expectations. The time series for expectations and Google searches show a similar behavior. This hints to a link between searching behavior and expectations development. In the next chapter this thesis will first introduce the microdata for the SCE survey, compute aspects of updating behavior and then proof both hypothesis with several regressions.
-
-\newpage
+By combining the results of the descriptive analysis it is possible to interpret higher volatility and uncertainty in inflation expectations in the last two years as a sign of an underlying relationship between expectations and uncertainty. The time series for expectations and GoogleTrends show a similar pattern. This hints to a link between searching behavior and expectations. In the next chapter this thesis will first introduce the microdata for the SCE survey, compute aspects of updating behavior and then test both hypotheses with several regressions.

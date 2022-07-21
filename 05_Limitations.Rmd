@@ -1,8 +1,7 @@
 ## Panel Conditioning
 
-@Weber.2021 state in their paper that due to panel conditioning, which describes the learning effect occurring by enrolling multiple times in a survey, the results of the survey can be biased. This learning behavior would differentiate the participants from the underlying population, which would mean that the sample can not longer be representative for the population (@Binder.2020).
-
+@Weber.2021 state in their paper that due to panel conditioning, which describes the learning effect occurring by enrolling multiple times in a survey, the results of the survey can be biased. This learning behavior would differentiate the participants from the underlying population, which would mean that the sample can no longer be seen as representative for the population (@Binder.2020).
 
 ## The Time Interval
 
-The analysis of the updating behavior faces huge limitations. Due to contract dependent limitations the SCE publishes the microdata with a one year delay. As seen in the previous chapters, the biggest increases in expectations and searching behavior lay in the last six months. This missing of the most crucial time interval for changes in inflation expectations is responsible for the missing interpretation of changes in updating behavior in the last months and maybe weak regression results.
+The analysis of the updating behavior faces huge obstacles. Due to contract dependent limitations the Center for Microeconomic Data publishes microdata with a one year delay. As seen in the previous chapters, the biggest increases in expectations and searching behavior lay in the last six months. This missing of the most crucial time interval for changes in inflation expectations is responsible for the missing interpretation of changes in updating behavior in the last months and maybe the weak regression results.
